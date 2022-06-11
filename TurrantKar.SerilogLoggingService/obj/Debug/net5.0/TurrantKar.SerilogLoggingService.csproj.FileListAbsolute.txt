@@ -1,0 +1,12 @@
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.SerilogLoggingService\bin\Debug\net5.0\TurrantKar.SerilogLoggingService.deps.json
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.SerilogLoggingService\bin\Debug\net5.0\TurrantKar.SerilogLoggingService.dll
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.SerilogLoggingService\bin\Debug\net5.0\ref\TurrantKar.SerilogLoggingService.dll
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.SerilogLoggingService\bin\Debug\net5.0\TurrantKar.SerilogLoggingService.pdb
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.SerilogLoggingService\obj\Debug\net5.0\TurrantKar.SerilogLoggingService.csprojAssemblyReference.cache
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.SerilogLoggingService\obj\Debug\net5.0\TurrantKar.SerilogLoggingService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.SerilogLoggingService\obj\Debug\net5.0\TurrantKar.SerilogLoggingService.AssemblyInfoInputs.cache
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.SerilogLoggingService\obj\Debug\net5.0\TurrantKar.SerilogLoggingService.AssemblyInfo.cs
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.SerilogLoggingService\obj\Debug\net5.0\TurrantKar.SerilogLoggingService.csproj.CoreCompileInputs.cache
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.SerilogLoggingService\obj\Debug\net5.0\TurrantKar.SerilogLoggingService.dll
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.SerilogLoggingService\obj\Debug\net5.0\ref\TurrantKar.SerilogLoggingService.dll
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.SerilogLoggingService\obj\Debug\net5.0\TurrantKar.SerilogLoggingService.pdb

@@ -1,0 +1,12 @@
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.Common\bin\Debug\net5.0\TurrantKar.Common.deps.json
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.Common\bin\Debug\net5.0\TurrantKar.Common.dll
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.Common\bin\Debug\net5.0\ref\TurrantKar.Common.dll
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.Common\bin\Debug\net5.0\TurrantKar.Common.pdb
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.Common\obj\Debug\net5.0\TurrantKar.Common.csprojAssemblyReference.cache
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.Common\obj\Debug\net5.0\TurrantKar.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.Common\obj\Debug\net5.0\TurrantKar.Common.AssemblyInfoInputs.cache
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.Common\obj\Debug\net5.0\TurrantKar.Common.AssemblyInfo.cs
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.Common\obj\Debug\net5.0\TurrantKar.Common.csproj.CoreCompileInputs.cache
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.Common\obj\Debug\net5.0\TurrantKar.Common.dll
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.Common\obj\Debug\net5.0\ref\TurrantKar.Common.dll
+C:\Users\lenovo\source\repos\TurrantKar.WebAPI\TurrantKar.Common\obj\Debug\net5.0\TurrantKar.Common.pdb
