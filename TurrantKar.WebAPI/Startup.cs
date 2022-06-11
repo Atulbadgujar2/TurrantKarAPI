@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TurrantKar.WebAPI
+namespace TurrantKar
 {
     public class Startup
     {
@@ -30,7 +30,7 @@ namespace TurrantKar.WebAPI
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TurrantKar.WebAPI", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TurrantKar", Version = "v1" });
             });
         }
 
@@ -41,7 +41,7 @@ namespace TurrantKar.WebAPI
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TurrantKar.WebAPI v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TurrantKar v1"));
             }
 
             app.UseHttpsRedirection();

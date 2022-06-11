@@ -1,6 +1,6 @@
 using System;
 
-namespace TurrantKar.WebAPI
+namespace TurrantKar
 {
     public class WeatherForecast
     {

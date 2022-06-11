@@ -3,21 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurrantKar.WebAPI", "TurrantKar.WebAPI\TurrantKar.WebAPI.csproj", "{54033BE2-4D8D-4E24-8D48-B2E68046324A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TurrantKar.WebAPI", "TurrantKar.WebAPI\TurrantKar.WebAPI.csproj", "{54033BE2-4D8D-4E24-8D48-B2E68046324A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurrantKar.Common", "TurrantKar.Common\TurrantKar.Common.csproj", "{774708CA-0C77-4939-81C6-8C95D9245AE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TurrantKar.Common", "TurrantKar.Common\TurrantKar.Common.csproj", "{774708CA-0C77-4939-81C6-8C95D9245AE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurrantKar.Repository", "TurrantKar.Repository\TurrantKar.Repository.csproj", "{3084D3D8-C0C6-4A58-B43D-5260DA1462E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TurrantKar.Repository", "TurrantKar.Repository\TurrantKar.Repository.csproj", "{3084D3D8-C0C6-4A58-B43D-5260DA1462E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurrantKar.DI", "TurrantKar.DI\TurrantKar.DI.csproj", "{051D4345-D0D8-40E5-9BF7-C2CB60559A83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TurrantKar.DI", "TurrantKar.DI\TurrantKar.DI.csproj", "{051D4345-D0D8-40E5-9BF7-C2CB60559A83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurrantKar.DS", "TurrantKar.DS\TurrantKar.DS.csproj", "{B18292FF-3904-437F-AF2B-4E32B439D8DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TurrantKar.DS", "TurrantKar.DS\TurrantKar.DS.csproj", "{B18292FF-3904-437F-AF2B-4E32B439D8DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurrantKar.EH", "TurrantKar.EH\TurrantKar.EH.csproj", "{3A84D295-C7C3-4401-8C17-957475CEE94C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TurrantKar.EH", "TurrantKar.EH\TurrantKar.EH.csproj", "{3A84D295-C7C3-4401-8C17-957475CEE94C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurrantKar.Entity", "TurrantKar.Entity\TurrantKar.Entity.csproj", "{03676B50-06C9-4BBA-AFEA-83B8229F5060}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TurrantKar.Entity", "TurrantKar.Entity\TurrantKar.Entity.csproj", "{03676B50-06C9-4BBA-AFEA-83B8229F5060}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurrantKar.DTO", "TurrantKar.DTO\TurrantKar.DTO.csproj", "{5A2302AA-DBC6-4DF0-9A53-8E0A6E49E93D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TurrantKar.DTO", "TurrantKar.DTO\TurrantKar.DTO.csproj", "{5A2302AA-DBC6-4DF0-9A53-8E0A6E49E93D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurrantKar.SerilogLoggingService", "TurrantKar.SerilogLoggingService\TurrantKar.SerilogLoggingService.csproj", "{615B7186-6452-4CDA-9216-03BC1B92C216}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{5A2302AA-DBC6-4DF0-9A53-8E0A6E49E93D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A2302AA-DBC6-4DF0-9A53-8E0A6E49E93D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A2302AA-DBC6-4DF0-9A53-8E0A6E49E93D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{615B7186-6452-4CDA-9216-03BC1B92C216}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{615B7186-6452-4CDA-9216-03BC1B92C216}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{615B7186-6452-4CDA-9216-03BC1B92C216}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{615B7186-6452-4CDA-9216-03BC1B92C216}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

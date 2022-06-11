@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "TurrantKar.WebAPI": {
+    "TurrantKar": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

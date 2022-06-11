@@ -4,14 +4,14 @@
     "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.DS\\TurrantKar.DS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.DS\\TurrantKar.DS.csproj": {
+    "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.Common\\TurrantKar.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.DS\\TurrantKar.DS.csproj",
-        "projectName": "TurrantKar.DS",
-        "projectPath": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.DS\\TurrantKar.DS.csproj",
+        "projectUniqueName": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.Common\\TurrantKar.Common.csproj",
+        "projectName": "TurrantKar.Common",
+        "projectPath": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.Common\\TurrantKar.Common.csproj",
         "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.DS\\obj\\",
+        "outputPath": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.Common\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,311 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.DS\\TurrantKar.DS.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.DS\\TurrantKar.DS.csproj",
+        "projectName": "TurrantKar.DS",
+        "projectPath": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.DS\\TurrantKar.DS.csproj",
+        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.DS\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.Common\\TurrantKar.Common.csproj": {
+                "projectPath": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.Common\\TurrantKar.Common.csproj"
+              },
+              "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.EH\\TurrantKar.EH.csproj": {
+                "projectPath": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.EH\\TurrantKar.EH.csproj"
+              },
+              "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.Repository\\TurrantKar.Repository.csproj": {
+                "projectPath": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.Repository\\TurrantKar.Repository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[11.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.EH\\TurrantKar.EH.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.EH\\TurrantKar.EH.csproj",
+        "projectName": "TurrantKar.EH",
+        "projectPath": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.EH\\TurrantKar.EH.csproj",
+        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.EH\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.11.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.Entity\\TurrantKar.Entity.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.Entity\\TurrantKar.Entity.csproj",
+        "projectName": "TurrantKar.Entity",
+        "projectPath": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.Entity\\TurrantKar.Entity.csproj",
+        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.Entity\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.Repository\\TurrantKar.Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.Repository\\TurrantKar.Repository.csproj",
+        "projectName": "TurrantKar.Repository",
+        "projectPath": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.Repository\\TurrantKar.Repository.csproj",
+        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.Common\\TurrantKar.Common.csproj": {
+                "projectPath": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.Common\\TurrantKar.Common.csproj"
+              },
+              "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.Entity\\TurrantKar.Entity.csproj": {
+                "projectPath": "C:\\Users\\lenovo\\source\\repos\\TurrantKar.WebAPI\\TurrantKar.Entity\\TurrantKar.Entity.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Http.Extensions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.1.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.1.4, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.FileExtensions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
