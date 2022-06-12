@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TurrantKar.DI\TurrantKar.DI.csproj" />
+    <ProjectReference Include="..\TurrantKar.DS\TurrantKar.DS.csproj" />
+    <ProjectReference Include="..\TurrantKar.DTO\TurrantKar.DTO.csproj" />
   </ItemGroup>
 
 </Project>

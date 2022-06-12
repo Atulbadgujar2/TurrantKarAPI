@@ -14,6 +14,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using System.IO;
 using TurrantKar.Common;
+using TurrantKar.DTO;
+using TurrantKar.Entity;
 
 namespace TK.Data
 {
@@ -68,7 +70,7 @@ namespace TK.Data
         /// </param>
         public TKDBContext(DbContextOptions<TKDBContext> options, IOptions<ConnectionStrings> appSetting) : base(options)
         {
-            _connString = appSetting.Value.DefaultConnection;
+            _connString = appSetting.Value.SqlConnection;
             // _connectionManager = connectionManager;
         }
 
@@ -105,14 +107,33 @@ namespace TK.Data
         #endregion DbContext Override Methods
 
         #region DbQuery  
-
+        #region Empty
+        /// <summary>
+        /// This is use to get AddressDTO view data. Any linq queries against Microsoft.EntityFrameworkCore.DbQuery`1 
+        /// is translated into database query.
+        /// </summary>
+        /// <remarks>
+        /// All database queries to get Microsoft.EntityFrameworkCore.DbQuery`1 should contains all the columns corresponding 
+        /// to properties of AddressQuery.
+        /// </remarks>
+        public DbQuery<AddressDTO> AddressQuery
+        {
+            get; set;
+        }
+        #endregion
 
 
         #endregion DbQuery
 
         #region DbSet
 
-        
+        #region Address
+        /// <summary>
+        /// DbSet&lt;Favorite&gt; can be used to query and save instances of Favorite entity. 
+        /// Linq queries can written using DbSet&lt;Favorite&gt; that will be translated to sql query and executed against database EMPLOYEE_DATA table. 
+        /// </summary>
+        public DbSet<Address> Address { get; set; }
+        #endregion
 
 
 

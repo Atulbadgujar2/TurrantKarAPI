@@ -19,6 +19,7 @@ using TK.Data;
 using TurrantKar.Common;
 using TurrantKar.DS;
 using TurrantKar.EH;
+using TurrantKar.Repository;
 using TurrantKar.SerilogLoggingService;
 
 namespace TurrantKar.DI
@@ -41,14 +42,15 @@ namespace TurrantKar.DI
                       new UnitOfWork(x.GetRequiredService<TKDBContext>(),
                                              false
                                             ));
-           
+            services.AddScoped<IAddressDS, AddressDS>();
+
             return services;
         }
 
         //Added All DataService Dependency 
         public static IServiceCollection AddTKDataServiceDependency(this IServiceCollection services)
         {
-            
+            services.AddScoped<IAddressRepository, AddressRepository>();
             return services;
         }
 

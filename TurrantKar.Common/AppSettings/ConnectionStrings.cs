@@ -5,7 +5,7 @@ namespace TurrantKar.Common
     public class ConnectionStrings
 
     {
-       public string DefaultConnection
+       public string SqlConnection
         {
             get;set;
         }
