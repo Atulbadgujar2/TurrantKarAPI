@@ -4,7 +4,7 @@ using TK.Entity;
 namespace TurrantKar.Entity
 {
     /// <summary>
-    /// this entity represting all Address properties.
+    /// this entity represting all Category properties.
     /// </summary>
     [Table("Category")]
     public class Category : BaseEntity

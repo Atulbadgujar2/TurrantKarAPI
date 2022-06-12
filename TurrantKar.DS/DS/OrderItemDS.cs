@@ -1,12 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TK.Data;
+using TurrantKar.Entity;
+using TurrantKar.Repository;
 
 namespace TurrantKar.DS
 {
-    class OrderItemDS
+    /// <summary>
+    /// This class Contain Business Logic of OrderItem
+    /// </summary>
+    public class OrderItemDS : BaseDS<OrderItem>, IOrderItemDS
     {
+        #region Local Member
+        IOrderItemRepository _orderItemRepository;
+        IUnitOfWork _unitOfWork;
+        #endregion
+
+        #region Constructor
+        public OrderItemDS(IOrderItemRepository orderItemRepository, IUnitOfWork unitOfWork) : base(orderItemRepository)
+        {
+            _orderItemRepository = orderItemRepository;
+            _unitOfWork = unitOfWork;
+        }
+        #endregion
     }
 }

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TurrantKar.Entity;
 
 namespace TurrantKar.DS
 {
-    class ICustomerAddressesDS
+    /// <summary>
+    /// This class Contain Business Logic of CustomerAddresses
+    /// </summary>
+    public interface ICustomerAddressesDS : IBaseDS<CustomerAddresses>
     {
     }
 }
+

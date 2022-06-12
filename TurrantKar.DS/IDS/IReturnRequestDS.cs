@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TurrantKar.Entity;
 
 namespace TurrantKar.DS
 {
-    class IReturnRequestDS
+    /// <summary>
+    /// This class Contain Business Logic of ReturnRequest
+    /// </summary>
+    public interface IReturnRequestDS : IBaseDS<ReturnRequest>
     {
     }
 }

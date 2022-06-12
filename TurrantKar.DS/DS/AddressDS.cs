@@ -1,12 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TK.Data;
+using TurrantKar.Entity;
+using TurrantKar.Repository;
 
 namespace TurrantKar.DS
 {
-    class AddressDS
+    /// <summary>
+    /// This class Contain Business Logic of AddressDS
+    /// </summary>
+    public class AddressDS : BaseDS<Address>, IAddressDS
     {
+        #region Local Member
+        IAddressRepository _addressRepository;
+        IUnitOfWork _unitOfWork;
+        #endregion
+
+        #region Constructor
+        public AddressDS(IAddressRepository addressRepository, IUnitOfWork unitOfWork) : base(addressRepository)
+        {
+            _addressRepository = addressRepository;
+            _unitOfWork = unitOfWork;
+        }
+        #endregion
     }
 }

@@ -19,47 +19,43 @@ namespace TurrantKar.DTO
     {        
 
         [NotMapped]
-        public override string CREATED_BY
+        public override int CreatedBy
         {
             get; set;
         }
 
         [NotMapped]
-        public override DateTime? CREATED_DATE
+        public override DateTime CreatedOn
         {
             get; set;
         }
 
         [NotMapped]
-        public override string MODIFIED_BY
+        public override int ModifiedBy
         {
             get; set;
         }
 
         [NotMapped]
-        public override DateTime? MODIFIED_DATE
+        public override DateTime ModifiedOn
         {
             get; set;
         }
 
         [NotMapped]
-        public override bool IS_DELETED
+        public override bool IsDeleted
         {
             get; set;
         }
 
         [NotMapped]
-        public override int TENANT_ID
+        public override int TenantId
         {
             get; set;
         }
 
 
-        [NotMapped]
-        public override string ORACLE_REFERENCE_ID
-        {
-            get; set;
-        }
+        
 
         
 

@@ -1,12 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TK.Data;
+using TurrantKar.Entity;
+using TurrantKar.Repository;
 
 namespace TurrantKar.DS
 {
-    class ProductCategoryMappingDS
+    /// <summary>
+    /// This class Contain Business Logic of ProductCategoryMapping
+    /// </summary>
+    public class ProductCategoryMappingDS : BaseDS<ProductCategoryMapping>, IProductCategoryMappingDS
     {
+        #region Local Member
+        IProductCategoryMappingRepository _productCategoryMappingRepository;
+        IUnitOfWork _unitOfWork;
+        #endregion
+
+        #region Constructor
+        public ProductCategoryMappingDS(IProductCategoryMappingRepository productCategoryMappingRepository, IUnitOfWork unitOfWork) : base(productCategoryMappingRepository)
+        {
+            _productCategoryMappingRepository = productCategoryMappingRepository;
+            _unitOfWork = unitOfWork;
+        }
+        #endregion
     }
 }

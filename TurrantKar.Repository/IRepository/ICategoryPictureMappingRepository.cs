@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TK.Data;
+using TurrantKar.Entity;
 
 namespace TurrantKar.Repository
 {
-    class ICategoryPictureMappingRepository
+
+    /// <summary>
+    /// This is the repository responsible for filtering data realted to CategoryPictureMapping and services related to it
+    /// </summary>
+    public interface ICategoryPictureMappingRepository : IBaseRepository<CategoryPictureMapping>
     {
     }
 }
+

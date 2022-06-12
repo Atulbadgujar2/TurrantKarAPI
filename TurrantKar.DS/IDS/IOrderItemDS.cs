@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TurrantKar.Entity;
 
 namespace TurrantKar.DS
 {
-    class IOrderItemDS
+    /// <summary>
+    /// This class Contain Business Logic of OrderItem
+    /// </summary>
+    public interface IOrderItemDS : IBaseDS<OrderItem>
     {
     }
 }
+

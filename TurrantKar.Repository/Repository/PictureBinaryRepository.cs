@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
+using TK.Data;
+using TurrantKar.Entity;
 
 namespace TurrantKar.Repository
 {
-    class PictureBinaryRepository
+    /// <summary>
+    /// This is the repository responsible for filtering data realted to PictureBinary and services related to it
+    /// </summary>
+    public class PictureBinaryRepository : BaseRepository<PictureBinary, TKDBContext>, IPictureBinaryRepository
     {
+        #region Constructor
+        public PictureBinaryRepository(TKDBContext context, IHttpContextAccessor httpContextAccessor) : base(context, httpContextAccessor)
+        {
+
+        }
+        #endregion
     }
 }
+

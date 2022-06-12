@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
+using TK.Data;
+using TurrantKar.Entity;
 
 namespace TurrantKar.Repository
 {
-    class OrderRepository
+    /// <summary>
+    /// This is the repository responsible for filtering data realted to Order and services related to it
+    /// </summary>
+    public class OrderRepository : BaseRepository<Order, TKDBContext>, IOrderRepository
     {
+        #region Constructor
+        public OrderRepository(TKDBContext context, IHttpContextAccessor httpContextAccessor) : base(context, httpContextAccessor)
+        {
+
+        }
+        #endregion
     }
 }
+

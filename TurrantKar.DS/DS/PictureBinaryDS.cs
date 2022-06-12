@@ -1,12 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TK.Data;
+using TurrantKar.Entity;
+using TurrantKar.Repository;
 
 namespace TurrantKar.DS
 {
-    class PictureBinaryDS
+    /// <summary>
+    /// This class Contain Business Logic of PictureBinary
+    /// </summary>
+    public class PictureBinaryDS : BaseDS<PictureBinary>, IPictureBinaryDS
     {
+        #region Local Member
+        IPictureBinaryRepository _pictureBinaryRepository;
+        IUnitOfWork _unitOfWork;
+        #endregion
+
+        #region Constructor
+        public PictureBinaryDS(IPictureBinaryRepository pictureBinaryRepository, IUnitOfWork unitOfWork) : base(pictureBinaryRepository)
+        {
+            _pictureBinaryRepository = pictureBinaryRepository;
+            _unitOfWork = unitOfWork;
+        }
+        #endregion
     }
 }

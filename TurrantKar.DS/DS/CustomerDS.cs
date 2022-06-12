@@ -1,12 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using TK.Data;
+using TurrantKar.Entity;
+using TurrantKar.Repository;
 
 namespace TurrantKar.DS
 {
-    class CustomerDS
+    /// <summary>
+    /// This class Contain Business Logic of Customer
+    /// </summary>
+    public class CustomerDS : BaseDS<Customer>, ICustomerDS
     {
+        #region Local Member
+        ICustomerRepository _customerRepository;
+        IUnitOfWork _unitOfWork;
+        #endregion
+
+        #region Constructor
+        public CustomerDS(ICustomerRepository customerRepository, IUnitOfWork unitOfWork) : base(customerRepository)
+        {
+            _customerRepository = customerRepository;
+            _unitOfWork = unitOfWork;
+        }
+        #endregion
     }
 }

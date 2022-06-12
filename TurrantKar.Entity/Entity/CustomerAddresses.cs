@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using TK.Entity;
 
-namespace TurrantKar.Entity.Entity
+namespace TurrantKar.Entity
 {
-    class CustomerAddresses
+
+    /// <summary>
+    /// this entity represting all CustomerAddresses properties.
+    /// </summary>
+    [Table("CustomerAddresses")]
+    public class CustomerAddresses : BaseEntity
     {
     }
 }

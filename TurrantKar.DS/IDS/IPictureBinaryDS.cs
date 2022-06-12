@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TurrantKar.Entity;
 
 namespace TurrantKar.DS
 {
-    class IPictureBinaryDS
+    /// <summary>
+    /// This class Contain Business Logic of PictureBinary
+    /// </summary>
+    public interface IPictureBinaryDS : IBaseDS<PictureBinary>
     {
     }
 }
+

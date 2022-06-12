@@ -5,10 +5,10 @@ namespace TurrantKar.Entity
 {
 
     /// <summary>
-    /// this entity represting all PictureBinary properties.
+    /// this entity represting all ShoppingCartItem properties.
     /// </summary>
-    [Table("PictureBinary")]
-    public class PictureBinary : BaseEntity
+    [Table("ShoppingCartItem")]
+    public class ShoppingCartItem : BaseEntity
     {
     }
 }

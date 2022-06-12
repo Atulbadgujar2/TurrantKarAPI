@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\TurrantKar.Common\TurrantKar.Common.csproj" />
     <ProjectReference Include="..\TurrantKar.EH\TurrantKar.EH.csproj" />
+    <ProjectReference Include="..\TurrantKar.Entity\TurrantKar.Entity.csproj" />
     <ProjectReference Include="..\TurrantKar.Repository\TurrantKar.Repository.csproj" />
   </ItemGroup>
 

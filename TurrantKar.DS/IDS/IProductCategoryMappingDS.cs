@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TurrantKar.Entity;
 
 namespace TurrantKar.DS
 {
-    class IProductCategoryMappingDS
+    /// <summary>
+    /// This class Contain Business Logic of ProductCategoryMapping
+    /// </summary>
+    public interface IProductCategoryMappingDS : IBaseDS<ProductCategoryMapping>
     {
     }
 }

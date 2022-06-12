@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using TK.Entity;
 
-namespace TurrantKar.Entity.Entity
+namespace TurrantKar.Entity
 {
-    class ProductPictureMapping
+
+    /// <summary>
+    /// this entity represting all ProductPictureMapping properties.
+    /// </summary>
+    [Table("ProductPictureMapping")]
+    public class ProductPictureMapping : BaseEntity
     {
     }
 }

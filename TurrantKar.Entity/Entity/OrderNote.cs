@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using TK.Entity;
 
-namespace TurrantKar.Entity.Entity
+namespace TurrantKar.Entity
 {
-    class OrderNote
+
+    /// <summary>
+    /// this entity represting all OrderNote properties.
+    /// </summary>
+    [Table("OrderNote")]
+    public class OrderNote : BaseEntity
     {
     }
 }
+
