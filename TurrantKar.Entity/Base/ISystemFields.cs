@@ -16,45 +16,41 @@ namespace TK.Entity
     public interface ISystemEntityField
     {
 
-        int ID
+        int Id
         {
             get; set;
         }
 
-        DateTime? CREATED_DATE
+        DateTime CreatedOn
         {
             get; set;
         }
 
-        string CREATED_BY
+        int CreatedBy
         {
             get; set;
         }
 
-        string MODIFIED_BY
+        DateTime ModifiedOn
         {
             get; set;
         }
 
-        DateTime? MODIFIED_DATE
+        int ModifiedBy
         {
             get; set;
         }
 
-        int TENANT_ID
+        int TenantId
         {
             get; set;
         }
 
-        bool IS_DELETED
+        bool IsDeleted
         {
             get; set;
         }
 
-        string ORACLE_REFERENCE_ID
-        {
-            get;set;
-        }
     }
 
 }

@@ -56,8 +56,8 @@ namespace TurrantKar.Common
         #endregion
 
         #region Int Constatnt 
-        public const int TENANT_ID = 2000;
-        public const int TENANT_USER_ID = 1;        
+        public const int TenantId = 2000;
+        public const int TenantUserId = 1;        
 
         #endregion
 

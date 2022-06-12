@@ -17,53 +17,49 @@ namespace TK.Entity
 
     public class BaseEntity : ISystemEntityField
     {
-
-        [Key]
-        public virtual int ID
+        
+  
+         [Key]
+        public virtual int Id
         {
             get; set;
         }
 
 
-        public virtual DateTime? CREATED_DATE
+        public virtual DateTime CreatedOn
         {
             get;
             set;
         }
 
-        public virtual string CREATED_BY
+        public virtual int CreatedBy
         {
             get;
             set;
         }
 
-        public virtual DateTime? MODIFIED_DATE
+        public virtual DateTime ModifiedOn
         {
             get;
             set;
         }
 
-        public virtual string MODIFIED_BY
+        public virtual int ModifiedBy
         {
             get;
             set;
         }
 
-        public virtual bool IS_DELETED
+        public virtual bool IsDeleted
         {
             get; set;
         }
 
-        public virtual int TENANT_ID
+        public virtual int TenantId
         {
             get; set;
         }
 
-        public virtual string ORACLE_REFERENCE_ID
-        {
-            get; set;
-        }
-        // Hari Dudani
         public override string ToString()
         {
             return JsonConvert.SerializeObject(this);

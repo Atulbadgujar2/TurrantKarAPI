@@ -97,13 +97,13 @@ namespace TK.Data
       
         public virtual async Task<ICollection<TEntity>> GetAllAsync()
         {
-                return await _context.Set<TEntity>().Where(x => !x.IS_DELETED).OrderByDescending(x => x.MODIFIED_DATE).ToListAsync();           
+                return await _context.Set<TEntity>().Where(x => !x.IsDeleted).OrderByDescending(x => x.ModifiedOn).ToListAsync();           
             
         }
 
         public virtual async Task<ICollection<TEntity>> GetAllDeletedAsync()
         {
-            return await _context.Set<TEntity>().Where(x => x.IS_DELETED).ToListAsync();
+            return await _context.Set<TEntity>().Where(x => x.IsDeleted).ToListAsync();
 
         }
         #endregion
@@ -448,7 +448,7 @@ namespace TK.Data
                 if (includeOptions.HasFlag(SystemFieldMask.CREATED_BY))
                 {
                     //sysEntityFields.CREATED_BY = TKConstant.TENANT_USER_ID.ToString();
-                    sysEntityFields.CREATED_BY = _httpContextAccessor.HttpContext.Request.Headers[_identityAssignedId];
+                    sysEntityFields.CreatedBy = Convert.ToInt32(_httpContextAccessor.HttpContext.Request.Headers[_identityAssignedId]);
 
                     //sysEntityFields.CREATED_BY = _session.GetString("CurrentIdentityUser");
 
@@ -457,14 +457,14 @@ namespace TK.Data
                 // If input masked value contain SystemFieldMask.CreatedOn, updates CreatedOn with current UTC date and time.
                 if (includeOptions.HasFlag(SystemFieldMask.CREATED_DATE))
                 {
-                    sysEntityFields.CREATED_DATE = DateTime.UtcNow;
+                    sysEntityFields.CreatedOn = DateTime.UtcNow;
                 }
 
                 // If input masked value contain SystemFieldMask.UpdatedBy, updates UpdatedBy with current login user from session. 
                 if (includeOptions.HasFlag(SystemFieldMask.MODIFIED_BY))
                 {
                     //sysEntityFields.MODIFIED_BY = TKConstant.TENANT_USER_ID.ToString();
-                    sysEntityFields.MODIFIED_BY = _httpContextAccessor.HttpContext.Request.Headers[_identityAssignedId];
+                    sysEntityFields.ModifiedBy = Convert.ToInt32(_httpContextAccessor.HttpContext.Request.Headers[_identityAssignedId]);
 
                     //string ab = _httpContextAccessor.HttpContext.Request.Cookies["IdentityUser"];
                     //sysEntityFields.MODIFIED_BY = _session.GetString("CurrentIdentityUser");
@@ -475,19 +475,19 @@ namespace TK.Data
                 // If input masked value contain SystemFieldMask.UpdatedOn, updates UpdatedOn with current UTC date and time.
                 if (includeOptions.HasFlag(SystemFieldMask.MODIFIED_DATE))
                 {
-                    sysEntityFields.MODIFIED_DATE = DateTime.UtcNow;
+                    sysEntityFields.ModifiedOn = DateTime.UtcNow;
                 }
 
                 // If input masked value contain SystemFieldMask.UpdatedOn, updates UpdatedOn with current UTC date and time.
                 if (includeOptions.HasFlag(SystemFieldMask.TENANT_ID))
                 {
-                    sysEntityFields.TENANT_ID = TKConstant.TENANT_ID;
+                    sysEntityFields.TenantId = TKConstant.TenantId;
                 }
 
                 // If input masked value contain SystemFieldMask.UpdatedOn, updates UpdatedOn with current UTC date and time.
                 if (includeOptions.HasFlag(SystemFieldMask.IS_DELETED))
                 {
-                    sysEntityFields.IS_DELETED = true;
+                    sysEntityFields.IsDeleted = true;
                 }
             }
         }
