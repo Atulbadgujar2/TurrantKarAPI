@@ -9,6 +9,9 @@
  * Last Updated On: 25 Feb 2021
  */
 
+using System.Data.Entity.Infrastructure;
+using TurrantKar.DTO;
+
 namespace TK.Data
 {
 
@@ -18,6 +21,24 @@ namespace TK.Data
     /// </summary>
     public partial class TKDBContext
     {
+        #region DbQuery  
+        #region Empty
+        /// <summary>
+        /// This is use to get AddressDTO view data. Any linq queries against Microsoft.EntityFrameworkCore.DbQuery`1 
+        /// is translated into database query.
+        /// </summary>
+        /// <remarks>
+        /// All database queries to get Microsoft.EntityFrameworkCore.DbQuery`1 should contains all the columns corresponding 
+        /// to properties of AddressQuery.
+        /// </remarks>
+        public DbQuery<AddressDTO> AddressQuery
+        {
+            get; set;
+        }
+        #endregion
+
+
+        #endregion DbQuery
     }
 }
 

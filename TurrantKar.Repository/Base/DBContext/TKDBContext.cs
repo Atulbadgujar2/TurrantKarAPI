@@ -106,24 +106,7 @@ namespace TK.Data
 
         #endregion DbContext Override Methods
 
-        #region DbQuery  
-        #region Empty
-        /// <summary>
-        /// This is use to get AddressDTO view data. Any linq queries against Microsoft.EntityFrameworkCore.DbQuery`1 
-        /// is translated into database query.
-        /// </summary>
-        /// <remarks>
-        /// All database queries to get Microsoft.EntityFrameworkCore.DbQuery`1 should contains all the columns corresponding 
-        /// to properties of AddressQuery.
-        /// </remarks>
-        public DbQuery<AddressDTO> AddressQuery
-        {
-            get; set;
-        }
-        #endregion
-
-
-        #endregion DbQuery
+    
 
         #region DbSet
 
@@ -138,6 +121,8 @@ namespace TK.Data
 
 
         #endregion DbSet
+
+    
     }
 
 

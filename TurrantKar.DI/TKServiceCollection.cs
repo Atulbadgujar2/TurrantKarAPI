@@ -42,7 +42,8 @@ namespace TurrantKar.DI
                       new UnitOfWork(x.GetRequiredService<TKDBContext>(),
                                              false
                                             ));
-            services.AddScoped<IAddressDS, AddressDS>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
+           
 
             return services;
         }
@@ -50,7 +51,7 @@ namespace TurrantKar.DI
         //Added All DataService Dependency 
         public static IServiceCollection AddTKDataServiceDependency(this IServiceCollection services)
         {
-            services.AddScoped<IAddressRepository, AddressRepository>();
+            services.AddScoped<IAddressDS, AddressDS>();
             return services;
         }
 
