@@ -9,8 +9,9 @@
  * Last Updated On: 25 Feb 2021
  */
 
-using System.Data.Entity.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using TurrantKar.DTO;
+using TurrantKar.Entity;
 
 namespace TK.Data
 {
@@ -39,6 +40,9 @@ namespace TK.Data
 
 
         #endregion DbQuery
+
+
+        
     }
 }
 

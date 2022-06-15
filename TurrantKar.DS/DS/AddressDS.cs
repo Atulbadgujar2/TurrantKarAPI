@@ -52,7 +52,7 @@ namespace TurrantKar.DS
             ResponseModelDTO commonRonsponseDTO = new ResponseModelDTO();
             Address entity = AddressDTO.MapToEntity(model);
             UpdateSystemFieldsByOpType(entity, OperationType.Add);
-            Address address = await _addressRepository.AddAsync(entity, token);
+            Address address = await AddAsync(entity,token);
             _unitOfWork.SaveAll();
             commonRonsponseDTO.Id = address.Id;
             return commonRonsponseDTO;

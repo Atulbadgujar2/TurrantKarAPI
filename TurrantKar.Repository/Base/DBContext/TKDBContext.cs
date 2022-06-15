@@ -14,7 +14,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using System.IO;
 using TurrantKar.Common;
-using TurrantKar.DTO;
 using TurrantKar.Entity;
 
 namespace TK.Data
@@ -122,7 +121,7 @@ namespace TK.Data
 
         #endregion DbSet
 
-    
+
     }
 
 
