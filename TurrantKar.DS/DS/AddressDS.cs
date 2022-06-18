@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using TK.Data;
@@ -52,16 +53,42 @@ namespace TurrantKar.DS
         public async Task<ResponseModelDTO> AddAddressAsync(AddressDTO model, CancellationToken token = default(CancellationToken))
         {
             ResponseModelDTO commonRonsponseDTO = new ResponseModelDTO();
-            Address entity = AddressDTO.MapToEntity(model);
-            UpdateSystemFieldsByOpType(entity, OperationType.Add);
-            Address address = await AddAsync(entity,token);
-            CustomerAddresses customerAddresses = new CustomerAddresses();
-            customerAddresses.Address_Id = address.Id;
-            customerAddresses.Customer_Id = model.CustomerId;
-            _customerAddressesDS.UpdateSystemFieldsByOpType(customerAddresses,OperationType.Add);
-            _unitOfWork.SaveAll();
-            commonRonsponseDTO.Id = address.Id;
-            return commonRonsponseDTO;
+
+            //Transaction Manage
+            using (TKDBContext context = new TKDBContext())
+            {
+                //Begin Trasaction
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+
+                        Address entity = AddressDTO.MapToEntity(model);
+                        UpdateSystemFieldsByOpType(entity, OperationType.Add);
+                        Address address = await AddAsync(entity, token);
+                        await _unitOfWork.SaveAsync();
+                        if (model.CustomerId != null)
+                        {
+                            // Add and Update EmployeeTaskRate Data
+                            CustomerAddresses customerAddresses = new CustomerAddresses();
+                            customerAddresses.Address_Id = address.Id;
+                            customerAddresses.Customer_Id = model.CustomerId;
+                            _customerAddressesDS.UpdateSystemFieldsByOpType(customerAddresses, OperationType.Add);
+                            await _customerAddressesDS.AddAsync(customerAddresses, token);
+                            _unitOfWork.SaveAll();
+                        }
+                        _unitOfWork.SaveAll();
+                        transaction.Commit();
+                        commonRonsponseDTO.Id = address.Id;
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                    }
+
+                    return commonRonsponseDTO;
+                }
+            }
         }
         #endregion
 

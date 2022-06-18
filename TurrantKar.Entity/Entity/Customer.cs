@@ -8,7 +8,7 @@ namespace TurrantKar.Entity
     /// <summary>
     /// this entity represting all Customer properties.
     /// </summary>
-    [Table("CategoryTemplate")]
+    [Table("Customer")]
     public class Customer : BaseEntity
     {
     }
