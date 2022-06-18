@@ -10,6 +10,14 @@ namespace TurrantKar.Entity
     [Table("OrderNote")]
     public class OrderNote : BaseEntity
     {
+
+        public string Note { get; set; }
+
+        public int OrderId { get; set; }
+
+        public int DownloadId { get; set; }
+
+        public bool DisplayToCustomer { get; set; }
     }
 }
 

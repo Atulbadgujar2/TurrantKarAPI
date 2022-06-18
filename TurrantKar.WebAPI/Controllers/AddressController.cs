@@ -26,19 +26,19 @@ namespace TurrantKar.WebAPI.Controllers
         #endregion
 
         #region Get
-        //[HttpGet]
-        //[Route("list")]
-        //public async Task<List<AddressDTO>> GetEmployeeByEmployeeID(string year = "0000", CancellationToken token = default(CancellationToken))
-        //{
-        //    return await _addressDS.GetAddressListByOptionParam(year, token);
-        //}
+        [HttpGet]
+        [Route("list/{customerId}")]
+        public async Task<List<AddressDTO>> GetAddressListByCustomerId([FromRoute] int customerId, CancellationToken token = default(CancellationToken))
+        {
+            return await _addressDS.GetAddressListByCustomerId(customerId, token);
+        }
 
-        //[HttpGet]
-        //[Route("details/{id}")]
-        //public async Task<AddressDTO> GetAddressDetailById([FromRoute] int id, CancellationToken token = default(CancellationToken))
-        //{
-        //    return await _addressDS.GetAddressDetailById(id, token);
-        //}
+        [HttpGet]
+        [Route("details/{id}")]
+        public async Task<AddressDTO> GetAddressDetailById([FromRoute] int id, CancellationToken token = default(CancellationToken))
+        {
+            return await _addressDS.GetAddressDetailById(id, token);
+        }
 
         #endregion
 

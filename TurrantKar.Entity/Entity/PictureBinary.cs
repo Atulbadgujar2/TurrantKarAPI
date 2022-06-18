@@ -10,5 +10,8 @@ namespace TurrantKar.Entity
     [Table("PictureBinary")]
     public class PictureBinary : BaseEntity
     {
+        public int PictureId { get; set; }
+
+        public int BinaryData { get; set; }
     }
 }

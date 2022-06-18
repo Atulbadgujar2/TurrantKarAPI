@@ -12,7 +12,9 @@ namespace TurrantKar.DS
     public interface IAddressDS : IBaseDS<Address>
     {
         
-        Task<ICollection<Address>> GetAddressByCustomerId(int customer, CancellationToken token = default(CancellationToken));
+        Task<List<AddressDTO>> GetAddressListByCustomerId(int customerId, CancellationToken token = default(CancellationToken));
+
+        Task<AddressDTO> GetAddressDetailById(int AddressId, CancellationToken token = default(CancellationToken));
 
         Task<ResponseModelDTO> AddAddressAsync(AddressDTO model, CancellationToken token = default(CancellationToken));
 
@@ -20,6 +22,7 @@ namespace TurrantKar.DS
 
         Task<ResponseModelDTO> DeleteAddressAsync(IdentificationDTO identificationDTO, CancellationToken token = default(CancellationToken));
 
+       
 
     }
 }

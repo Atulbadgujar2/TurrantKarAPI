@@ -9,6 +9,11 @@ namespace TurrantKar.Entity
     [Table("CategoryPictureMapping")]
     public class CategoryPictureMapping : BaseEntity
     {
-       
+        public int PictureId { get; set; }
+        public int CategoryId { get; set; }
+
+        public int DisplayOrder { get; set; }
+
+
     }
 }

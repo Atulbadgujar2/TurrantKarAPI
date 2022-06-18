@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using TK.Entity;
 
 namespace TurrantKar.Entity
@@ -10,5 +11,12 @@ namespace TurrantKar.Entity
     [Table("CategoryTemplate")]
     public class CategoryTemplate : BaseEntity
     {
+        public string Name { get; set; }
+
+        public string ViewPath { get; set; }
+
+        public int DisplayOrder { get; set; }
+
+        public Guid ImageGuid { get; set; }
     }
 }

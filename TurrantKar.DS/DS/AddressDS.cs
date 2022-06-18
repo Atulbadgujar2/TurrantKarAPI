@@ -31,21 +31,16 @@ namespace TurrantKar.DS
         #endregion
 
         #region Get 
-        public async Task<ICollection<Address>> GetAddressByCustomerId(int customer, CancellationToken token = default(CancellationToken))
+        public async Task<List<AddressDTO>> GetAddressListByCustomerId(int customerId, CancellationToken token = default(CancellationToken))
         {
-            return await FindAllAsync(i => i.IsDeleted == false, token);
+            return await _addressRepository.GetAddressListByCustomerId(customerId, token);
         }
-        ///// <inheritdoc />  
-        //public async Task<List<AddressDTO>> GetAddressListByOptionParam(string year, CancellationToken token = default(CancellationToken))
-        //{
-        //    return await _AddressRepository.GetAddressListByOptionParam(year, token);
-        //}
-
-        ///// <inheritdoc />  
-        //public async Task<AddressDTO> GetAddressDetailById(int AddressId, CancellationToken token = default(CancellationToken))
-        //{
-        //    return await _AddressRepository.GetAddressDetailById(AddressId, token);
-        //}
+      
+        /// <inheritdoc />  
+        public async Task<AddressDTO> GetAddressDetailById(int AddressId, CancellationToken token = default(CancellationToken))
+        {
+            return await _addressRepository.GetAddressDetailById(AddressId, token);
+        }
         #endregion
 
         #region Add 
@@ -71,8 +66,8 @@ namespace TurrantKar.DS
                         {
                             // Add and Update EmployeeTaskRate Data
                             CustomerAddresses customerAddresses = new CustomerAddresses();
-                            customerAddresses.Address_Id = address.Id;
-                            customerAddresses.Customer_Id = model.CustomerId;
+                            customerAddresses.AddressId = address.Id;
+                            customerAddresses.CustomerId = model.CustomerId;
                             _customerAddressesDS.UpdateSystemFieldsByOpType(customerAddresses, OperationType.Add);
                             await _customerAddressesDS.AddAsync(customerAddresses, token);
                             _unitOfWork.SaveAll();
@@ -119,6 +114,7 @@ namespace TurrantKar.DS
             ResponseModelDTO responseModel = new ResponseModelDTO();
             // Get entity if exists
             Address entity = await FindAsync(v => v.Id == identificationDTO.UNIQUE_ID && v.IsDeleted == false, token);
+
             if (entity != null)
             {
                 responseModel.IsSuccess = true;
