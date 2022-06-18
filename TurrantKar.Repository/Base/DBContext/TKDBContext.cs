@@ -96,7 +96,7 @@ namespace TK.Data
              .AddJsonFile($"appsettings.dev.json", false, true);
 
             var configuration = builder.Build();
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
+            var connectionString = configuration.GetConnectionString("SqlConnection");
 
             optionsBuilder.UseSqlServer(connectionString);
 
@@ -116,6 +116,138 @@ namespace TK.Data
         /// </summary>
         public DbSet<Address> Address { get; set; }
         #endregion
+
+        #region CustomerAddresses
+        /// <summary>
+        /// DbSet&lt;Favorite&gt; can be used to query and save instances of Favorite entity. 
+        /// Linq queries can written using DbSet&lt;Favorite&gt; that will be translated to sql query and executed against database Address table. 
+        /// </summary>
+        public DbSet<CustomerAddresses> CustomerAddresses { get; set; }
+        #endregion
+
+        #region Customer
+        /// <summary>
+        /// DbSet&lt;Favorite&gt; can be used to query and save instances of Favorite entity. 
+        /// Linq queries can written using DbSet&lt;Favorite&gt; that will be translated to sql query and executed against database Address table. 
+        /// </summary>
+        public DbSet<Category> Category { get; set; }
+        #endregion
+
+        #region Category
+        /// <summary>
+        /// DbSet&lt;Favorite&gt; can be used to query and save instances of Favorite entity. 
+        /// Linq queries can written using DbSet&lt;Favorite&gt; that will be translated to sql query and executed against database Address table. 
+        /// </summary>
+        public DbSet<Customer> Customer { get; set; }
+        #endregion
+
+        #region CategoryPictureMapping
+        /// <summary>
+        /// DbSet&lt;Favorite&gt; can be used to query and save instances of Favorite entity. 
+        /// Linq queries can written using DbSet&lt;Favorite&gt; that will be translated to sql query and executed against database Address table. 
+        /// </summary>
+        public DbSet<CategoryPictureMapping> CategoryPictureMapping { get; set; }
+        #endregion
+
+
+        #region CategoryTemplate
+        /// <summary>
+        /// DbSet&lt;Favorite&gt; can be used to query and save instances of Favorite entity. 
+        /// Linq queries can written using DbSet&lt;Favorite&gt; that will be translated to sql query and executed against database Address table. 
+        /// </summary>
+        public DbSet<CategoryTemplate> CategoryTemplate { get; set; }
+        #endregion
+
+        #region Order
+        /// <summary>
+        /// DbSet&lt;Favorite&gt; can be used to query and save instances of Favorite entity. 
+        /// Linq queries can written using DbSet&lt;Favorite&gt; that will be translated to sql query and executed against database Address table. 
+        /// </summary>
+        public DbSet<Order> Order { get; set; }
+        #endregion
+
+        #region OrderItem
+        /// <summary>
+        /// DbSet&lt;Favorite&gt; can be used to query and save instances of Favorite entity. 
+        /// Linq queries can written using DbSet&lt;Favorite&gt; that will be translated to sql query and executed against database Address table. 
+        /// </summary>
+        public DbSet<OrderItem> OrderItem { get; set; }
+        #endregion
+
+        #region OrderNote
+        /// <summary>
+        /// DbSet&lt;Favorite&gt; can be used to query and save instances of Favorite entity. 
+        /// Linq queries can written using DbSet&lt;Favorite&gt; that will be translated to sql query and executed against database Address table. 
+        /// </summary>
+        public DbSet<OrderNote> OrderNote { get; set; }
+        #endregion
+
+        #region Picture
+        /// <summary>
+        /// DbSet&lt;Favorite&gt; can be used to query and save instances of Favorite entity. 
+        /// Linq queries can written using DbSet&lt;Favorite&gt; that will be translated to sql query and executed against database Address table. 
+        /// </summary>
+        public DbSet<Picture> Picture { get; set; }
+        #endregion
+
+
+        #region PictureBinary
+        /// <summary>
+        /// DbSet&lt;Favorite&gt; can be used to query and save instances of Favorite entity. 
+        /// Linq queries can written using DbSet&lt;Favorite&gt; that will be translated to sql query and executed against database Address table. 
+        /// </summary>
+        public DbSet<PictureBinary> PictureBinary { get; set; }
+        #endregion
+
+        #region Product
+        /// <summary>
+        /// DbSet&lt;Favorite&gt; can be used to query and save instances of Favorite entity. 
+        /// Linq queries can written using DbSet&lt;Favorite&gt; that will be translated to sql query and executed against database Address table. 
+        /// </summary>
+        public DbSet<Product> Product { get; set; }
+        #endregion
+
+        #region ProductCategoryMapping
+        /// <summary>
+        /// DbSet&lt;Favorite&gt; can be used to query and save instances of Favorite entity. 
+        /// Linq queries can written using DbSet&lt;Favorite&gt; that will be translated to sql query and executed against database Address table. 
+        /// </summary>
+        public DbSet<ProductCategoryMapping> ProductCategoryMapping { get; set; }
+        #endregion
+
+        #region ProductPictureMapping
+        /// <summary>
+        /// DbSet&lt;Favorite&gt; can be used to query and save instances of Favorite entity. 
+        /// Linq queries can written using DbSet&lt;Favorite&gt; that will be translated to sql query and executed against database Address table. 
+        /// </summary>
+        public DbSet<ProductPictureMapping> ProductPictureMapping { get; set; }
+        #endregion
+
+        #region ProductTemplate
+        /// <summary>
+        /// DbSet&lt;Favorite&gt; can be used to query and save instances of Favorite entity. 
+        /// Linq queries can written using DbSet&lt;Favorite&gt; that will be translated to sql query and executed against database Address table. 
+        /// </summary>
+        public DbSet<ProductTemplate> ProductTemplate { get; set; }
+        #endregion
+
+        #region ReturnRequest
+        /// <summary>
+        /// DbSet&lt;Favorite&gt; can be used to query and save instances of Favorite entity. 
+        /// Linq queries can written using DbSet&lt;Favorite&gt; that will be translated to sql query and executed against database Address table. 
+        /// </summary>
+        public DbSet<ReturnRequest> ReturnRequest { get; set; }
+        #endregion
+
+        #region ShoppingCartItem
+        /// <summary>
+        /// DbSet&lt;Favorite&gt; can be used to query and save instances of Favorite entity. 
+        /// Linq queries can written using DbSet&lt;Favorite&gt; that will be translated to sql query and executed against database Address table. 
+        /// </summary>
+        public DbSet<ShoppingCartItem> ShoppingCartItem { get; set; }
+        #endregion
+
+
 
 
 

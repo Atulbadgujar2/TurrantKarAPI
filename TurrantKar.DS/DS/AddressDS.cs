@@ -17,12 +17,14 @@ namespace TurrantKar.DS
         #region Local Member
         IAddressRepository _addressRepository;
         IUnitOfWork _unitOfWork;
+        ICustomerAddressesDS _customerAddressesDS;
         #endregion
 
         #region Constructor
-        public AddressDS(IAddressRepository addressRepository, IUnitOfWork unitOfWork) : base(addressRepository)
+        public AddressDS(IAddressRepository addressRepository, ICustomerAddressesDS customerAddressesDS,IUnitOfWork unitOfWork) : base(addressRepository)
         {
             _addressRepository = addressRepository;
+            _customerAddressesDS = customerAddressesDS;
             _unitOfWork = unitOfWork;
         }
         #endregion
@@ -53,6 +55,10 @@ namespace TurrantKar.DS
             Address entity = AddressDTO.MapToEntity(model);
             UpdateSystemFieldsByOpType(entity, OperationType.Add);
             Address address = await AddAsync(entity,token);
+            CustomerAddresses customerAddresses = new CustomerAddresses();
+            customerAddresses.Address_Id = address.Id;
+            customerAddresses.Customer_Id = model.CustomerId;
+            _customerAddressesDS.UpdateSystemFieldsByOpType(customerAddresses,OperationType.Add);
             _unitOfWork.SaveAll();
             commonRonsponseDTO.Id = address.Id;
             return commonRonsponseDTO;

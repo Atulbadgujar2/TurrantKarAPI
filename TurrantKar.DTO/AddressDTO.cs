@@ -16,6 +16,8 @@ namespace TurrantKar.DTO
         public string PhoneNumber { get; set; }
         public string FaxNumber { get; set; }
 
+        public int CustomerId { get; set; }
+
         public static Address MapToEntity(AddressDTO model)
         {
             Address entity = new Address();
@@ -29,7 +31,7 @@ namespace TurrantKar.DTO
             entity.ZipPostalCode = model.ZipPostalCode;
             entity.FaxNumber = model.FaxNumber;
             entity.Address1 = model.Address1;
-            entity.Address2 = model.Address2;
+            entity.Address2 = model.Address2;          
             return entity;
         }
 

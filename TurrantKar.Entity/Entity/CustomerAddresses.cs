@@ -10,5 +10,9 @@ namespace TurrantKar.Entity
     [Table("CustomerAddresses")]
     public class CustomerAddresses : BaseEntity
     {
+        public int Address_Id { get; set; }
+
+        public int Customer_Id { get; set; }
+        
     }
 }

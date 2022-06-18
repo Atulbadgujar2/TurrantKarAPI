@@ -43,7 +43,23 @@ namespace TurrantKar.DI
                                              false
                                             ));
             services.AddScoped<IAddressRepository, AddressRepository>();
-           
+            services.AddScoped<ICustomerAddressesRepository, CustomerAddressesRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IOrderItemRepository, OrderItemRepository>();
+            services.AddScoped<IOrderNoteRepository, OrderNoteRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ICategoryPictureMappingRepository, CategoryPictureMappingRepository>();
+            services.AddScoped<ICategoryTemplateRepository, CategoryTemplateRepository>();
+            services.AddScoped<IPictureBinaryRepository, PictureBinaryRepository>();
+            services.AddScoped<IPictureRepository, PictureRepository>();
+            services.AddScoped<IProductCategoryMappingRepository, ProductCategoryMappingRepository>();
+            services.AddScoped<IProductPictureMappingRepository, ProductPictureMappingRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IProductTemplateRepository, ProductTemplateRepository>();
+            services.AddScoped<IReturnRequestRepository, ReturnRequestRepository>();
+            services.AddScoped<IShoppingCartItemRepository, ShoppingCartItemRepository>();
+
 
             return services;
         }
@@ -52,6 +68,22 @@ namespace TurrantKar.DI
         public static IServiceCollection AddTKDataServiceDependency(this IServiceCollection services)
         {
             services.AddScoped<IAddressDS, AddressDS>();
+            services.AddScoped<ICustomerAddressesDS, CustomerAddressesDS>();
+            services.AddScoped<ICustomerDS, CustomerDS>();
+            services.AddScoped<IOrderItemDS, OrderItemDS>();
+            services.AddScoped<IOrderNoteDS, OrderNoteDS>();
+            services.AddScoped<IOrderDS, OrderDS>();
+            services.AddScoped<ICategoryDS, CategoryDS>();
+            services.AddScoped<ICategoryPictureMappingDS, CategoryPictureMappingDS>();
+            services.AddScoped<ICategoryTemplateDS, CategoryTemplateDS>();
+            services.AddScoped<IPictureBinaryDS, PictureBinaryDS>();
+            services.AddScoped<IPictureDS, PictureDS>();
+            services.AddScoped<IProductCategoryMappingDS, ProductCategoryMappingDS>();
+            services.AddScoped<IProductPictureMappingDS, ProductPictureMappingDS>();
+            services.AddScoped<IProductDS, ProductDS>();
+            services.AddScoped<IProductTemplateDS, ProductTemplateDS>();
+            services.AddScoped<IReturnRequestDS, ReturnRequestDS>();
+            services.AddScoped<IShoppingCartItemDS, ShoppingCartItemDS>();
             return services;
         }
 
