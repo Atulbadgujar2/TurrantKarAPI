@@ -1,4 +1,7 @@
-﻿using TurrantKar.Entity;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using TurrantKar.DTO;
+using TurrantKar.Entity;
 
 namespace TurrantKar.DS
 {
@@ -7,6 +10,12 @@ namespace TurrantKar.DS
     /// </summary>
     public interface IPictureDS : IBaseDS<Picture>
     {
+        Task<ResponseModelDTO> AddPictureAsync(PictureDTO model, CancellationToken token = default(CancellationToken));
+
+        Task<ResponseModelDTO> UpdatePictureAsync(PictureDTO model, CancellationToken token = default(CancellationToken));
+
+        Task<ResponseModelDTO> DeletePictureAsync(IdentificationDTO identificationDTO, CancellationToken token = default(CancellationToken));
+
     }
 }
 
