@@ -10,19 +10,19 @@ using TurrantKar.Repository;
 namespace TurrantKar.DS
 {
     /// <summary>
-    /// This class Contain Business Logic of ShoppingCartItem
+    /// This class Contain Business Logic of ShoppingCart
     /// </summary>
-    public class ShoppingCartItemDS : BaseDS<ShoppingCartItem>, IShoppingCartItemDS
+    public class ShoppingCartDS : BaseDS<ShoppingCart>, IShoppingCartDS
     {
         #region Local Member
-        IShoppingCartItemRepository _shoppingCartItemRepository;
+        IShoppingCartRepository _shoppingCartRepository;
         IUnitOfWork _unitOfWork;
         #endregion
 
         #region Constructor
-        public ShoppingCartItemDS(IShoppingCartItemRepository shoppingCartItemRepository, IUnitOfWork unitOfWork) : base(shoppingCartItemRepository)
+        public ShoppingCartDS(IShoppingCartRepository shoppingCartRepository, IUnitOfWork unitOfWork) : base(shoppingCartRepository)
         {
-            _shoppingCartItemRepository = shoppingCartItemRepository;
+            _shoppingCartRepository = shoppingCartRepository;
             _unitOfWork = unitOfWork;
         }
         #endregion
@@ -33,7 +33,7 @@ namespace TurrantKar.DS
 
         #region Add 
         /// <inheritdoc /> 
-        public async Task<ResponseModelDTO> AddShoppingCartItemAsync(ShoppingCartItemDTO model, CancellationToken token = default(CancellationToken))
+        public async Task<ResponseModelDTO> AddShoppingCartAsync(ShoppingCartDTO model, CancellationToken token = default(CancellationToken))
         {
             ResponseModelDTO commonRonsponseDTO = new ResponseModelDTO();
 
@@ -46,14 +46,14 @@ namespace TurrantKar.DS
                     try
                     {
 
-                        ShoppingCartItem entity = new ShoppingCartItem();
+                        ShoppingCart entity = new ShoppingCart();
                         UpdateSystemFieldsByOpType(entity, OperationType.Add);
-                        ShoppingCartItem ShoppingCartItem = await AddAsync(entity, token);
+                        ShoppingCart ShoppingCart = await AddAsync(entity, token);
                         await _unitOfWork.SaveAsync();
 
                         _unitOfWork.SaveAll();
                         transaction.Commit();
-                        commonRonsponseDTO.Id = ShoppingCartItem.Id;
+                        commonRonsponseDTO.Id = ShoppingCart.Id;
                     }
                     catch (Exception ex)
                     {
@@ -68,16 +68,16 @@ namespace TurrantKar.DS
 
         #region Update
         /// <inheritdoc /> 
-        public async Task<ResponseModelDTO> UpdateShoppingCartItemAsync(ShoppingCartItemDTO model, CancellationToken token = default(CancellationToken))
+        public async Task<ResponseModelDTO> UpdateShoppingCartAsync(ShoppingCartDTO model, CancellationToken token = default(CancellationToken))
         {
             ResponseModelDTO commonRonsponseDTO = new ResponseModelDTO();
-            // Get existing ShoppingCartItem.
-            ShoppingCartItem entity = await _shoppingCartItemRepository.GetAsync(model.Id, token);
+            // Get existing ShoppingCart.
+            ShoppingCart entity = await _shoppingCartRepository.GetAsync(model.Id, token);
             if (entity != null & !entity.IsDeleted)
             {
-                //entity = ShoppingCartItemDTO.MapToEntityWithEntity(model, entity);
+                //entity = ShoppingCartDTO.MapToEntityWithEntity(model, entity);
                 UpdateSystemFieldsByOpType(entity, OperationType.Update);
-                await _shoppingCartItemRepository.UpdateAsync(entity, entity.Id, token);
+                await _shoppingCartRepository.UpdateAsync(entity, entity.Id, token);
             }
             _unitOfWork.SaveAll();
             return commonRonsponseDTO;
@@ -88,17 +88,17 @@ namespace TurrantKar.DS
 
         #region Delete
         /// <inheritdoc /> 
-        public async Task<ResponseModelDTO> DeleteShoppingCartItemAsync(IdentificationDTO identificationDTO, CancellationToken token = default(CancellationToken))
+        public async Task<ResponseModelDTO> DeleteShoppingCartAsync(IdentificationDTO identificationDTO, CancellationToken token = default(CancellationToken))
         {
             ResponseModelDTO responseModel = new ResponseModelDTO();
             // Get entity if exists
-            ShoppingCartItem entity = await FindAsync(v => v.Id == identificationDTO.UNIQUE_ID && v.IsDeleted == false, token);
+            ShoppingCart entity = await FindAsync(v => v.Id == identificationDTO.UNIQUE_ID && v.IsDeleted == false, token);
 
             if (entity != null)
             {
                 responseModel.IsSuccess = true;
                 UpdateSystemFieldsByOpType(entity, OperationType.Delete);
-                await _shoppingCartItemRepository.UpdateAsync(entity, entity.Id, token);
+                await _shoppingCartRepository.UpdateAsync(entity, entity.Id, token);
                 // Save Data
                 _unitOfWork.SaveAll();
             }

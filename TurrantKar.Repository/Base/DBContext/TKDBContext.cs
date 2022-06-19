@@ -245,6 +245,18 @@ namespace TK.Data
         /// Linq queries can written using DbSet&lt;Favorite&gt; that will be translated to sql query and executed against database Address table. 
         /// </summary>
         public DbSet<ShoppingCartItem> ShoppingCartItem { get; set; }
+
+        
+        #endregion
+
+        #region ShoppingCartItem
+        /// <summary>
+        /// DbSet&lt;Favorite&gt; can be used to query and save instances of Favorite entity. 
+        /// Linq queries can written using DbSet&lt;Favorite&gt; that will be translated to sql query and executed against database Address table. 
+        /// </summary>
+        public DbSet<ShoppingCart> ShoppingCart { get; set; }
+
+        
         #endregion
 
 

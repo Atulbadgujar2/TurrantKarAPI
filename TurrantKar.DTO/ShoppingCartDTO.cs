@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TurrantKar.DTO
 {
-    public class ShoppingCartItemDTO : BaseDTO
+    public class ShoppingCartDTO : BaseDTO
     {
         public int CustomerId { get; set; }
         public int ProductId { get; set; }

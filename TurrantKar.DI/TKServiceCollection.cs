@@ -58,7 +58,7 @@ namespace TurrantKar.DI
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductTemplateRepository, ProductTemplateRepository>();
             services.AddScoped<IReturnRequestRepository, ReturnRequestRepository>();
-            services.AddScoped<IShoppingCartItemRepository, ShoppingCartItemRepository>();
+            services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
 
 
             return services;
@@ -83,7 +83,7 @@ namespace TurrantKar.DI
             services.AddScoped<IProductDS, ProductDS>();
             services.AddScoped<IProductTemplateDS, ProductTemplateDS>();
             services.AddScoped<IReturnRequestDS, ReturnRequestDS>();
-            services.AddScoped<IShoppingCartItemDS, ShoppingCartItemDS>();
+            services.AddScoped<IShoppingCartDS, ShoppingCartDS>();
             return services;
         }
 
