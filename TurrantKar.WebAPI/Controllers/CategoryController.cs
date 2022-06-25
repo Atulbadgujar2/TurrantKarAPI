@@ -33,7 +33,7 @@ namespace TurrantKar.WebAPI.Controllers
         {
 
             int responseId = 0;
-            var file = Request.Form.Files[0];
+            //var file = Request.Form.Files[0];
             ResponseModelDTO responseModelDTO = await _categoryDS.AddCategoryAsync(model);
             responseId = responseModelDTO.Id;
 

@@ -48,8 +48,8 @@ namespace TurrantKar.DS
                 {
                     try
                     {
-                        string FILE_PATH = Path.Combine(Directory.GetCurrentDirectory(), "Attachment");
-                        var filePathName = FILE_PATH + theFile.PictureGuidId + Path.GetExtension(theFile.FileName);
+                        string FILE_PATH = Path.Combine(Directory.GetCurrentDirectory(), "Attachment", theFile.PictureGuidId + Path.GetExtension(theFile.FileName));
+                        var filePathName = FILE_PATH;
                         theFile.VirtualPath = filePathName;
                         if (theFile.FileAsBase64.Contains(","))
                         {

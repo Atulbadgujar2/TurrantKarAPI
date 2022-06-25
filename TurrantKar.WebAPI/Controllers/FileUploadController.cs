@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using TurrantKar.DS;
 using TurrantKar.DTO;
@@ -26,10 +27,10 @@ namespace TurrantKar.WebAPI.Controllers
         #endregion
 
         [HttpPost("postfile")]
-        public IActionResult Post([FromBody] FileUploadDTO theFile)
+        public IActionResult Post([FromBody] FileUploadDTO theFile, CancellationToken token = default(CancellationToken))
         {
 
-          
+             _pictureDS.AddPictureAsync(theFile, token);
             return Ok();
         }
     }
