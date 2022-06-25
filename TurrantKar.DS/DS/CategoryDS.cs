@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using TK.Data;
@@ -46,6 +47,10 @@ namespace TurrantKar.DS
                 {
                     try
                     {
+                        //var filePath = Path.GetTempFileName();
+
+                        //Byte[] bytes = Convert.FromBase64String(model.FileUpload.FileAsBase64);
+                        //File.WriteAllBytes(filePath, bytes);
 
                         Category entity = new Category();
                         UpdateSystemFieldsByOpType(entity, OperationType.Add);
@@ -81,6 +86,7 @@ namespace TurrantKar.DS
                 await _categoryRepository.UpdateAsync(entity, entity.Id, token);
             }
             _unitOfWork.SaveAll();
+           
             return commonRonsponseDTO;
         }
         #endregion
