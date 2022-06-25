@@ -11,5 +11,9 @@ namespace TurrantKar.DTO
         public DateTime LastModifiedDate { get; set; }
         public string FileAsBase64 { get; set; }
         public byte[] FileAsByteArray { get; set; }
+
+        public Guid PictureGuidId { get; set; }
+
+        public string  VirtualPath { get; set; }
     }
 }

@@ -18,13 +18,15 @@ namespace TurrantKar.DS
     {
         #region Local Member
         ICategoryRepository _categoryRepository;
+        ICategoryPictureMappingDS _categoryPictureMappingDS;
         IUnitOfWork _unitOfWork;
         #endregion
 
         #region Constructor
-        public CategoryDS(ICategoryRepository categoryRepository, IUnitOfWork unitOfWork) : base(categoryRepository)
+        public CategoryDS(ICategoryRepository categoryRepository, ICategoryPictureMappingDS categoryPictureMappingDS, IUnitOfWork unitOfWork) : base(categoryRepository)
         {
             _categoryRepository = categoryRepository;
+            _categoryPictureMappingDS = categoryPictureMappingDS;
             _unitOfWork = unitOfWork;
         }
         #endregion
@@ -52,14 +54,20 @@ namespace TurrantKar.DS
                         //Byte[] bytes = Convert.FromBase64String(model.FileUpload.FileAsBase64);
                         //File.WriteAllBytes(filePath, bytes);
 
-                        Category entity = new Category();
+                        Category entity = CategoryDTO.MapToEntity(model);
                         UpdateSystemFieldsByOpType(entity, OperationType.Add);
-                        Category Category = await AddAsync(entity, token);
+                        Category category = await AddAsync(entity, token);
                         await _unitOfWork.SaveAsync();
-                        
+
+                        CategoryPictureMapping categoryPictureMapping = new CategoryPictureMapping();
+                        categoryPictureMapping.CategoryId = category.Id;
+                        categoryPictureMapping.PictureId = Guid.NewGuid();
+                        _categoryPictureMappingDS.UpdateSystemFieldsByOpType(categoryPictureMapping, OperationType.Add);
+                         await _categoryPictureMappingDS.AddAsync(categoryPictureMapping, token);
+
                         _unitOfWork.SaveAll();
                         transaction.Commit();
-                        commonRonsponseDTO.Id = Category.Id;
+                        commonRonsponseDTO.Id = category.Id;
                     }
                     catch (Exception ex)
                     {

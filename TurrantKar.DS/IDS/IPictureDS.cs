@@ -10,7 +10,7 @@ namespace TurrantKar.DS
     /// </summary>
     public interface IPictureDS : IBaseDS<Picture>
     {
-        Task<ResponseModelDTO> AddPictureAsync(PictureDTO model, CancellationToken token = default(CancellationToken));
+        Task<ResponseModelDTO> AddPictureAsync(FileUploadDTO model, CancellationToken token = default(CancellationToken));
 
         Task<ResponseModelDTO> UpdatePictureAsync(PictureDTO model, CancellationToken token = default(CancellationToken));
 

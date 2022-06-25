@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using TK.Entity;
 
 namespace TurrantKar.Entity
@@ -21,7 +22,9 @@ namespace TurrantKar.Entity
         public bool IsNew { get; set; }
 
         public string VirtualPath { get; set; }
-     
+
+        public Guid PictureGuidId { get; set; }
+
     }
 }
 

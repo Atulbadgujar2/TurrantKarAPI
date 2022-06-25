@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using TK.Data;
@@ -16,13 +17,15 @@ namespace TurrantKar.DS
     {
         #region Local Member
         IPictureRepository _pictureRepository;
+        IPictureBinaryDS _pictureBinaryDS;
         IUnitOfWork _unitOfWork;
         #endregion
 
         #region Constructor
-        public PictureDS(IPictureRepository pictureRepository, IUnitOfWork unitOfWork) : base(pictureRepository)
+        public PictureDS(IPictureRepository pictureRepository,IPictureBinaryDS pictureBinaryDS, IUnitOfWork unitOfWork) : base(pictureRepository)
         {
             _pictureRepository = pictureRepository;
+            _pictureBinaryDS = pictureBinaryDS;
             _unitOfWork = unitOfWork;
         }
         #endregion
@@ -33,7 +36,7 @@ namespace TurrantKar.DS
 
         #region Add 
         /// <inheritdoc /> 
-        public async Task<ResponseModelDTO> AddPictureAsync(PictureDTO model, CancellationToken token = default(CancellationToken))
+        public async Task<ResponseModelDTO> AddPictureAsync(FileUploadDTO theFile, CancellationToken token = default(CancellationToken))
         {
             ResponseModelDTO commonRonsponseDTO = new ResponseModelDTO();
 
@@ -45,15 +48,36 @@ namespace TurrantKar.DS
                 {
                     try
                     {
+                        string FILE_PATH = Path.Combine(Directory.GetCurrentDirectory(), "Attachment");
+                        var filePathName = FILE_PATH + theFile.PictureGuidId + Path.GetExtension(theFile.FileName);
+                        theFile.VirtualPath = filePathName;
+                        if (theFile.FileAsBase64.Contains(","))
+                        {
+                            theFile.FileAsBase64 = theFile.FileAsBase64.Substring(theFile.FileAsBase64.IndexOf(",") + 1);
+                        }
 
-                        Picture entity = new Picture();
+                        theFile.FileAsByteArray = Convert.FromBase64String(theFile.FileAsBase64);
+
+                        using (var fs = new FileStream(filePathName, FileMode.CreateNew))
+                        {
+                            fs.Write(theFile.FileAsByteArray, 0, theFile.FileAsByteArray.Length);
+                        }
+
+                        Picture entity = PictureDTO.MapToEntity(theFile);
                         UpdateSystemFieldsByOpType(entity, OperationType.Add);
-                        Picture Picture = await AddAsync(entity, token);
+                        Picture pictureEntity = await AddAsync(entity, token);
                         await _unitOfWork.SaveAsync();
+
+
+                        PictureBinary pictureBinary = new PictureBinary();
+                        pictureBinary.PictureId = pictureEntity.Id;
+                        pictureBinary.BinaryData = theFile.FileAsByteArray;
+                        _pictureBinaryDS.UpdateSystemFieldsByOpType(pictureBinary, OperationType.Add);
+                        await _pictureBinaryDS.AddAsync(pictureBinary, token);
 
                         _unitOfWork.SaveAll();
                         transaction.Commit();
-                        commonRonsponseDTO.Id = Picture.Id;
+                        commonRonsponseDTO.Id = pictureEntity.Id;
                     }
                     catch (Exception ex)
                     {

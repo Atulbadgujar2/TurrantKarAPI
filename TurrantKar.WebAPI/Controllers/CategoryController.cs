@@ -34,34 +34,34 @@ namespace TurrantKar.WebAPI.Controllers
 
             int responseId = 0;
             var file = Request.Form.Files[0];
-            //ResponseModelDTO responseModelDTO = await _categoryDS.AddCategoryAsync(model);
-            //responseId = responseModelDTO.Id;
+            ResponseModelDTO responseModelDTO = await _categoryDS.AddCategoryAsync(model);
+            responseId = responseModelDTO.Id;
 
 
             return responseId;
 
         }
 
-        [HttpPost("PostFile/{Id}")]
-        public ActionResult PostFile(IFormFile uploadedFile)
-        {
-            try {
-                var saveFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Attachment");
-                string FileExtn = Path.GetExtension(uploadedFile.FileName);
-                string uniqueFileName = Guid.NewGuid().ToString() + FileExtn;
-                string filePath = Path.Combine(saveFilePath, uniqueFileName);
+        //[HttpPost("PostFile/{Id}")]
+        //public ActionResult PostFile(IFormFile uploadedFile)
+        //{
+        //    try {
+        //        var saveFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Attachment");
+        //        string FileExtn = Path.GetExtension(uploadedFile.FileName);
+        //        string uniqueFileName = Guid.NewGuid().ToString() + FileExtn;
+        //        string filePath = Path.Combine(saveFilePath, uniqueFileName);
                
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                     uploadedFile.CopyTo(stream);
-                }
-            }
-            catch(Exception ex)
-            {
+        //        using (var stream = new FileStream(filePath, FileMode.Create))
+        //        {
+        //             uploadedFile.CopyTo(stream);
+        //        }
+        //    }
+        //    catch(Exception ex)
+        //    {
 
-            }
-            return Ok();
-        }
+        //    }
+        //    return Ok();
+        //}
         #endregion
     }
 }

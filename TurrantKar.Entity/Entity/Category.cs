@@ -14,10 +14,9 @@ namespace TurrantKar.Entity
         public string MetaTitle { get; set; }
         public string PageSizeOptions { get; set; }
         public string Description { get; set; }
-        public int CategoryTemplateId { get; set; }
+        public int? CategoryTemplateId { get; set; }
         public string MetaDescription { get; set; }
-        public int ParentCategoryId { get; set; }
-        public int PictureId { get; set; }
+        public int? ParentCategoryId { get; set; }     
         public int PageSize { get; set; }
         public bool AllowCustomersToSelectPageSize { get; set; }
         public bool ShowOnHomepage { get; set; }

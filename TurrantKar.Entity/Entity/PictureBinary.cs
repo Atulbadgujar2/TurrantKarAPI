@@ -12,6 +12,6 @@ namespace TurrantKar.Entity
     {
         public int PictureId { get; set; }
 
-        public int BinaryData { get; set; }
+        public byte[] BinaryData { get; set; }
     }
 }
