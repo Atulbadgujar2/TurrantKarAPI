@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace TurrantKar.DTO
 {
     /// <summary>
@@ -10,6 +12,11 @@ namespace TurrantKar.DTO
         /// Entity identityfier for the entity on which operation is performed.
         /// </summary>
         public int Id;
+
+        /// <summary>
+        /// Entity identityfier for the entity on which operation is performed.
+        /// </summary>
+        public Guid GuidId;
 
         /// <summary>
         /// Success flag.

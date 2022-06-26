@@ -16,7 +16,7 @@ using System.IO;
 using TurrantKar.Common;
 using TurrantKar.Entity;
 
-namespace TK.Data
+namespace TurrantKar.Data
 {
 
     /// <summary>  

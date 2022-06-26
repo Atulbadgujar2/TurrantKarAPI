@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using TK.Entity;
+
 
 namespace TurrantKar.Entity
 {
@@ -29,5 +29,7 @@ namespace TurrantKar.Entity
         public decimal PriceFrom { get; set; }
         public decimal PriceTo { get; set; }
         public bool ManuallyPriceRange { get; set; }
+
+        public decimal Discount { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading;
 using System.Threading.Tasks;
-using TK.Data;
+using TurrantKar.Data;
 using TurrantKar.DTO;
 using TurrantKar.Entity;
 

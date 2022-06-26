@@ -13,13 +13,13 @@ using System;
 using System.Threading.Tasks;
 using System.Transactions;
 
-namespace TK.Data
+namespace TurrantKar.Data
 {
 
     /// <summary>
     /// This class provides methods save enitty 
     /// </summary>
-    /// <seealso cref="TK.Data.IUnitOfWork" />
+    /// <seealso cref="TurrantKar.Data.IUnitOfWork" />
     public class UnitOfWork : IUnitOfWork
     {
 

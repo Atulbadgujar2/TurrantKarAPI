@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using TK.Data;
+using TurrantKar.Data;
 using TurrantKar.Common;
 using TurrantKar.DTO;
 using TurrantKar.Entity;
@@ -16,14 +16,18 @@ namespace TurrantKar.DS
     {
         #region Local Member
         IProductRepository _productRepository;
+        IProductCategoryMappingDS _productCategoryMappingDS;
+        IProductPictureMappingDS _productPictureMappingDS;
         IUnitOfWork _unitOfWork;
         #endregion
 
         #region Constructor
-        public ProductDS(IProductRepository productRepository, IUnitOfWork unitOfWork) : base(productRepository)
+        public ProductDS(IProductRepository productRepository, IProductCategoryMappingDS productCategoryMappingDS, IProductPictureMappingDS productPictureMappingDS, IUnitOfWork unitOfWork) : base(productRepository)
         {
             _productRepository = productRepository;
             _unitOfWork = unitOfWork;
+            _productCategoryMappingDS = productCategoryMappingDS;
+            _productPictureMappingDS = productPictureMappingDS;
         }
         #endregion
 
@@ -45,15 +49,29 @@ namespace TurrantKar.DS
                 {
                     try
                     {
+                        Guid newGuid = Guid.NewGuid();
 
-                        Product entity = new Product();
+                        Product entity = ProductDTO.MapToEntity(model);
                         UpdateSystemFieldsByOpType(entity, OperationType.Add);
-                        Product Product = await AddAsync(entity, token);
+                        Product product = await AddAsync(entity, token);
                         await _unitOfWork.SaveAsync();
+
+                        ProductPictureMapping productPictureMapping = new ProductPictureMapping();
+                        productPictureMapping.ProductId = product.Id;
+                        productPictureMapping.PictureId = newGuid;
+                        _productPictureMappingDS.UpdateSystemFieldsByOpType(productPictureMapping, OperationType.Add);
+                        await _productPictureMappingDS.AddAsync(productPictureMapping, token);
+
+                        ProductCategoryMapping productCategoryMapping = new ProductCategoryMapping();
+                        productCategoryMapping.ProductId = product.Id;
+                        productCategoryMapping.CategoryId = model.CategoryId;
+                        _productCategoryMappingDS.UpdateSystemFieldsByOpType(productCategoryMapping, OperationType.Add);
+                        await _productCategoryMappingDS.AddAsync(productCategoryMapping, token);
 
                         _unitOfWork.SaveAll();
                         transaction.Commit();
-                        commonRonsponseDTO.Id = Product.Id;
+                        commonRonsponseDTO.Id = product.Id;
+                        commonRonsponseDTO.GuidId = newGuid;
                     }
                     catch (Exception ex)
                     {
@@ -71,16 +89,57 @@ namespace TurrantKar.DS
         public async Task<ResponseModelDTO> UpdateProductAsync(ProductDTO model, CancellationToken token = default(CancellationToken))
         {
             ResponseModelDTO commonRonsponseDTO = new ResponseModelDTO();
-            // Get existing Product.
-            Product entity = await _productRepository.GetAsync(model.Id, token);
-            if (entity != null & !entity.IsDeleted)
+            //Transaction Manage
+            using (TKDBContext context = new TKDBContext())
             {
-                //entity = ProductDTO.MapToEntityWithEntity(model, entity);
-                UpdateSystemFieldsByOpType(entity, OperationType.Update);
-                await _productRepository.UpdateAsync(entity, entity.Id, token);
+                //Begin Trasaction
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        // Get existing Product.
+                        Product entity = await _productRepository.GetAsync(model.Id, token);
+                        if (entity != null & !entity.IsDeleted)
+                        {
+                            entity = ProductDTO.MapToEntityWithEntity(model, entity);
+                            UpdateSystemFieldsByOpType(entity, OperationType.Update);
+                            await _productRepository.UpdateAsync(entity, entity.Id, token);
+                        }
+
+                        // Get existing Product.
+                        ProductCategoryMapping productCategoryMapping = await _productCategoryMappingDS.FindAsync(i=> i.ProductId == model.Id, token);
+                        if (productCategoryMapping != null & !productCategoryMapping.IsDeleted)
+                        {
+                            if(productCategoryMapping.CategoryId != model.CategoryId)
+                            {
+                                productCategoryMapping.CategoryId = model.CategoryId;
+                                _productCategoryMappingDS.UpdateSystemFieldsByOpType(productCategoryMapping, OperationType.Update);
+                                await _productCategoryMappingDS.UpdateAsync(productCategoryMapping, productCategoryMapping.Id, token);
+                            }
+                           
+                        }
+
+                        if (model.IsNewGuid)
+                        {
+                            Guid newGuid = Guid.NewGuid();
+                            ProductPictureMapping productPictureMapping = new ProductPictureMapping();
+                            productPictureMapping.ProductId = model.Id;
+                            productPictureMapping.PictureId = newGuid;
+                            _productPictureMappingDS.UpdateSystemFieldsByOpType(productPictureMapping, OperationType.Add);
+                            await _productPictureMappingDS.AddAsync(productPictureMapping, token);
+                        }
+                        _unitOfWork.SaveAll();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                    }
+
+                    return commonRonsponseDTO;
+                }
             }
-            _unitOfWork.SaveAll();
-            return commonRonsponseDTO;
+          
+            
         }
         #endregion
 
@@ -91,22 +150,43 @@ namespace TurrantKar.DS
         public async Task<ResponseModelDTO> DeleteProductAsync(IdentificationDTO identificationDTO, CancellationToken token = default(CancellationToken))
         {
             ResponseModelDTO responseModel = new ResponseModelDTO();
-            // Get entity if exists
-            Product entity = await FindAsync(v => v.Id == identificationDTO.UNIQUE_ID && v.IsDeleted == false, token);
 
-            if (entity != null)
+            //Transaction Manage
+            using (TKDBContext context = new TKDBContext())
             {
-                responseModel.IsSuccess = true;
-                UpdateSystemFieldsByOpType(entity, OperationType.Delete);
-                await _productRepository.UpdateAsync(entity, entity.Id, token);
-                // Save Data
-                _unitOfWork.SaveAll();
+                //Begin Trasaction
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    Product entity = await FindAsync(v => v.Id == identificationDTO.UNIQUE_ID && v.IsDeleted == false, token);
+
+                    ProductCategoryMapping productCategoryMapping = await _productCategoryMappingDS.FindAsync(v => v.ProductId == identificationDTO.UNIQUE_ID && v.IsDeleted == false, token);
+
+                    ProductPictureMapping productPictureMapping = await _productPictureMappingDS.FindAsync(v => v.Id == identificationDTO.UNIQUE_ID && v.IsDeleted == false, token);
+
+                    if (entity != null)
+                    {
+                        responseModel.IsSuccess = true;
+                        UpdateSystemFieldsByOpType(entity, OperationType.Delete);
+                        await _productRepository.UpdateAsync(entity, entity.Id, token);
+
+                        _productCategoryMappingDS.UpdateSystemFieldsByOpType(productCategoryMapping, OperationType.Delete);
+                        await _productCategoryMappingDS.UpdateAsync(productCategoryMapping, productCategoryMapping.Id, token);
+
+                        _productPictureMappingDS.UpdateSystemFieldsByOpType(productPictureMapping, OperationType.Delete);
+                        await _productPictureMappingDS.UpdateAsync(productPictureMapping, productPictureMapping.Id, token);
+                        // Save Data
+                        _unitOfWork.SaveAll();
+                    }
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                    }
+                    return responseModel;
+                }
             }
-            else
-            {
-                responseModel.IsSuccess = false;
-            }
-            return responseModel;
+
+            // Get entity if exists
+           
         }
         #endregion
     }

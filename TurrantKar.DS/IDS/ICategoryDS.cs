@@ -11,7 +11,11 @@ namespace TurrantKar.DS
     /// </summary>
     public interface ICategoryDS : IBaseDS<Category>
     {
-      
+
+        Task<List<CategoryViewDTO>> GetCategoryList(CancellationToken token = default(CancellationToken));
+
+        Task<CategoryViewDTO> GetCategoryDetailById(int categoryId, CancellationToken token = default(CancellationToken));
+
         Task<ResponseModelDTO> AddCategoryAsync(CategoryDTO model, CancellationToken token = default(CancellationToken));
 
         Task<ResponseModelDTO> UpdateCategoryAsync(CategoryDTO model, CancellationToken token = default(CancellationToken));

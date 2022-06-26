@@ -1,5 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
-using TK.Data;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Threading;
+using System.Threading.Tasks;
+using TurrantKar.Data;
+using TurrantKar.DTO;
 using TurrantKar.Entity;
 
 namespace TurrantKar.Repository
@@ -11,9 +16,27 @@ namespace TurrantKar.Repository
     {
         #region Constructor
         public CategoryRepository(TKDBContext context, IHttpContextAccessor httpContextAccessor) : base(context, httpContextAccessor)
-        {
-
-        }
+        { }
         #endregion
+
+        /// <inheritdoc />  
+        public async Task<List<CategoryViewDTO>> GetCategoryList(CancellationToken token = default(CancellationToken))
+        {
+            string sql = "prc_GetAddressListByCustomerId, @IsDeleted";
+            SqlParameter paramDELETED = new SqlParameter("@IsDeleted", false);           
+            return await GetQueryEntityListAsync<CategoryViewDTO>(sql, new SqlParameter[] {  paramDELETED }, token);
+        }
+
+        /// <inheritdoc />  
+        public async Task<CategoryViewDTO> GetCategoryDetailById(int categoryId, CancellationToken token = default(CancellationToken))
+        {
+            string sql = "prc_GetAddressByAddressId @AddressId , @IsDeleted";
+            SqlParameter paramDeleted = new SqlParameter("@IsDeleted", false);
+            SqlParameter paramAddressId = new SqlParameter("@AddressId", categoryId);
+            return await GetQueryEntityAsync<CategoryViewDTO>(sql, new SqlParameter[] { paramAddressId, paramDeleted }, token);
+        }
+
+
+
     }
 }

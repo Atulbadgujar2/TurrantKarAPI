@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using TK.Entity;
+
 
 namespace TurrantKar.Entity
 {
@@ -12,6 +12,29 @@ namespace TurrantKar.Entity
     public class Product : BaseEntity
     {
         public string Name { get; set; }
+        public string ShortDescription { get; set; }
+        public string FullDescription { get; set; }
+        public decimal Price { get; set; }
+        public decimal PricePerQuantity { get; set; }
+
+        public decimal Offer { get; set; }
+
+        public bool ShowOnHomepage { get; set; }
+
+        public string DeliveryInstruction { get; set; }
+
+        public bool IsFreeShipping { get; set; }
+
+        public bool IsInStock { get; set; }
+
+        public bool IsCODAvailable { get; set; }
+
+        public int OnlySupportedPincode { get; set; }
+
+        public string Tag { get; set; }
+
+        public int StockQuantity { get; set; }
+     
         public string MetaKeywords { get; set; }
         public string MetaTitle { get; set; }
         public string Sku { get; set; }
@@ -22,12 +45,11 @@ namespace TurrantKar.Entity
         public int ProductTypeId { get; set; }
         public int ParentGroupedProductId { get; set; }
         public bool VisibleIndividually { get; set; }
-        public string ShortDescription { get; set; }
-        public string FullDescription { get; set; }
+    
         public string AdminComment { get; set; }
         public int ProductTemplateId { get; set; }
         public int VendorId { get; set; }
-        public bool ShowOnHomepage { get; set; }
+        
         public string MetaDescription { get; set; }
         public bool AllowCustomerReviews { get; set; }
         public int ApprovedRatingSum { get; set; }
@@ -59,7 +81,7 @@ namespace TurrantKar.Entity
         public int RentalPriceLength { get; set; }
         public int RentalPricePeriodId { get; set; }
         public bool IsShipEnabled { get; set; }
-        public bool IsFreeShipping { get; set; }
+      
         public bool ShipSeparately { get; set; }
         public decimal AdditionalShippingCharge { get; set; }
         public int DeliveryDateId { get; set; }
@@ -70,7 +92,7 @@ namespace TurrantKar.Entity
         public int ProductAvailabilityRangeId { get; set; }
         public bool UseMultipleWarehouses { get; set; }
         public int WarehouseId { get; set; }
-        public int StockQuantity { get; set; }
+       
         public bool DisplayStockAvailability { get; set; }
         public bool DisplayStockQuantity { get; set; }
         public int MinStockQuantity { get; set; }
@@ -87,7 +109,7 @@ namespace TurrantKar.Entity
         public bool AvailableForPreOrder { get; set; }
         public DateTime PreOrderAvailabilityStartDateTimeUtc { get; set; }
         public bool CallForPrice { get; set; }
-        public decimal Price { get; set; }
+       
         public decimal OldPrice { get; set; }
         public decimal ProductCost { get; set; }
         public bool CustomerEntersPrice { get; set; }

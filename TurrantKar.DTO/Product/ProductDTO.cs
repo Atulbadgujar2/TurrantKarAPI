@@ -3,12 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TurrantKar.Entity;
 
 namespace TurrantKar.DTO
 {
     public class  ProductDTO : BaseDTO
     {
         public string Name { get; set; }
+        public string ShortDescription { get; set; }
+        public string FullDescription { get; set; }
+
+        public decimal Price { get; set; }
+
+        public decimal PricePerQuantity { get; set; }
+
+        public decimal Offer { get; set; }
+
+        public bool ShowOnHomepage { get; set; }
+
+        public string DeliveryInstruction { get; set; }
+
+        public bool IsFreeShipping { get; set; }
+
+        public bool IsInStock { get; set; }
+
+        public bool IsCODAvailable { get; set; }
+
+        public int OnlySupportedPincode { get; set; }
+
+        public string Tag { get; set; }
+
+        public int StockQuantity { get; set; }
+
+        public bool IsNewGuid { get; set; }
+
+
         public string MetaKeywords { get; set; }
         public string MetaTitle { get; set; }
         public string Sku { get; set; }
@@ -19,12 +48,13 @@ namespace TurrantKar.DTO
         public int ProductTypeId { get; set; }
         public int ParentGroupedProductId { get; set; }
         public bool VisibleIndividually { get; set; }
-        public string ShortDescription { get; set; }
-        public string FullDescription { get; set; }
+       
         public string AdminComment { get; set; }
-        public int ProductTemplateId { get; set; }
+    
         public int VendorId { get; set; }
-        public bool ShowOnHomepage { get; set; }
+
+        public int CategoryId { get; set; }
+
         public string MetaDescription { get; set; }
         public bool AllowCustomerReviews { get; set; }
         public int ApprovedRatingSum { get; set; }
@@ -56,7 +86,7 @@ namespace TurrantKar.DTO
         public int RentalPriceLength { get; set; }
         public int RentalPricePeriodId { get; set; }
         public bool IsShipEnabled { get; set; }
-        public bool IsFreeShipping { get; set; }
+    
         public bool ShipSeparately { get; set; }
         public decimal AdditionalShippingCharge { get; set; }
         public int DeliveryDateId { get; set; }
@@ -67,7 +97,7 @@ namespace TurrantKar.DTO
         public int ProductAvailabilityRangeId { get; set; }
         public bool UseMultipleWarehouses { get; set; }
         public int WarehouseId { get; set; }
-        public int StockQuantity { get; set; }
+      
         public bool DisplayStockAvailability { get; set; }
         public bool DisplayStockQuantity { get; set; }
         public int MinStockQuantity { get; set; }
@@ -84,7 +114,7 @@ namespace TurrantKar.DTO
         public bool AvailableForPreOrder { get; set; }
         public DateTime PreOrderAvailabilityStartDateTimeUtc { get; set; }
         public bool CallForPrice { get; set; }
-        public decimal Price { get; set; }
+       
         public decimal OldPrice { get; set; }
         public decimal ProductCost { get; set; }
         public bool CustomerEntersPrice { get; set; }
@@ -119,5 +149,57 @@ namespace TurrantKar.DTO
         public bool IsRenewals { get; set; }
         public bool IsQuestionnaireNeeded { get; set; }
         public bool IsLabRequired { get; set; }
+
+        public static Product MapToEntity(ProductDTO model)
+        {
+            Product entity = new Product();
+            entity.Name = model.Name;
+            entity.ShortDescription = model.ShortDescription;
+            entity.FullDescription = model.FullDescription;
+            entity.IsCODAvailable = model.IsCODAvailable;
+            entity.IsFreeShipping = model.IsFreeShipping;
+            entity.StockQuantity = model.StockQuantity;
+            entity.IsInStock = model.IsInStock;
+            entity.Price = model.Price;
+            entity.PricePerQuantity = model.PricePerQuantity;
+            entity.Offer = model.Offer;
+            entity.Tag = model.Tag;
+            entity.OnlySupportedPincode = model.OnlySupportedPincode;
+            entity.DeliveryInstruction = model.DeliveryInstruction;
+            entity.DisplayOrder = model.DisplayOrder;
+            entity.Published = model.Published;
+            entity.MetaKeywords = model.MetaKeywords;
+            entity.Name = model.Name;
+            entity.MetaTitle = model.MetaTitle;
+            entity.ShowOnHomepage = model.ShowOnHomepage;
+            return entity;
+        }
+
+        public static Product MapToEntityWithEntity(ProductDTO model, Product entity)
+        {
+            entity.Name = model.Name;
+            entity.ShortDescription = model.ShortDescription;
+            entity.FullDescription = model.FullDescription;
+            entity.IsCODAvailable = model.IsCODAvailable;
+            entity.IsFreeShipping = model.IsFreeShipping;
+            entity.StockQuantity = model.StockQuantity;
+            entity.IsInStock = model.IsInStock;
+            entity.Price = model.Price;
+            entity.PricePerQuantity = model.PricePerQuantity;
+            entity.Offer = model.Offer;
+            entity.Tag = model.Tag;
+            entity.OnlySupportedPincode = model.OnlySupportedPincode;
+            entity.DeliveryInstruction = model.DeliveryInstruction;
+            entity.DisplayOrder = model.DisplayOrder;
+            entity.Published = model.Published;
+            entity.MetaKeywords = model.MetaKeywords;
+            entity.Name = model.Name;
+            entity.MetaTitle = model.MetaTitle;
+            entity.ShowOnHomepage = model.ShowOnHomepage;
+
+            return entity;
+        }
     }
+
+ 
 }

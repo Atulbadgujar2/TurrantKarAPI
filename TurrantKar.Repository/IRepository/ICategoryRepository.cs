@@ -1,4 +1,8 @@
-﻿using TK.Data;
+﻿using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using TurrantKar.Data;
+using TurrantKar.DTO;
 using TurrantKar.Entity;
 
 namespace TurrantKar.Repository
@@ -9,6 +13,9 @@ namespace TurrantKar.Repository
     /// </summary>
     public interface ICategoryRepository : IBaseRepository<Category>
     {
+        Task<List<CategoryViewDTO>> GetCategoryList(CancellationToken token = default(CancellationToken));
+
+        Task<CategoryViewDTO> GetCategoryDetailById(int categoryId, CancellationToken token = default(CancellationToken));
     }
 }
 

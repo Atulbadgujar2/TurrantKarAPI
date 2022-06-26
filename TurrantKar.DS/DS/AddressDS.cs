@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using TK.Data;
+using TurrantKar.Data;
 using TurrantKar.Common;
 using TurrantKar.DTO;
 using TurrantKar.Entity;
@@ -37,9 +37,9 @@ namespace TurrantKar.DS
         }
       
         /// <inheritdoc />  
-        public async Task<AddressDTO> GetAddressDetailById(int AddressId, CancellationToken token = default(CancellationToken))
+        public async Task<AddressDTO> GetAddressDetailById(int addressId, CancellationToken token = default(CancellationToken))
         {
-            return await _addressRepository.GetAddressDetailById(AddressId, token);
+            return await _addressRepository.GetAddressDetailById(addressId, token);
         }
         #endregion
 

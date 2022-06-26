@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using TK.Entity;
+
 
 namespace TurrantKar.Entity
 {

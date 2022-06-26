@@ -1,5 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using TK.Entity;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace TurrantKar.Entity
 {
@@ -10,7 +11,7 @@ namespace TurrantKar.Entity
     [Table("ProductPictureMapping")]
     public class ProductPictureMapping : BaseEntity
     {
-        public int PictureId { get; set; }
+        public Guid PictureId { get; set; }
 
         public int ProductId { get; set; }
 

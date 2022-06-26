@@ -10,7 +10,7 @@
  */
 using System;
 
-namespace TK.Entity
+namespace TurrantKar.Entity
 {
 
     public interface ISystemEntityField

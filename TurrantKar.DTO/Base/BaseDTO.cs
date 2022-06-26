@@ -10,7 +10,7 @@
  */
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using TK.Entity;
+using TurrantKar.Entity;
 
 namespace TurrantKar.DTO
 {

@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace TK.Entity
+namespace TurrantKar.Entity
 {
 
     public class BaseEntity : ISystemEntityField

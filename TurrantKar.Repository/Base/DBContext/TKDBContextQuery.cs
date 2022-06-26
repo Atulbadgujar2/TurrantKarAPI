@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using TurrantKar.DTO;
 using TurrantKar.Entity;
 
-namespace TK.Data
+namespace TurrantKar.Data
 {
 
     /// <summary>  
@@ -38,11 +38,28 @@ namespace TK.Data
         }
         #endregion
 
+        #region CategoryViewDTO
+        /// <summary>
+        /// This is use to get CategoryViewDTO view data. Any linq queries against Microsoft.EntityFrameworkCore.DbQuery`1 
+        /// is translated into database query.
+        /// </summary>
+        /// <remarks>
+        /// All database queries to get Microsoft.EntityFrameworkCore.DbQuery`1 should contains all the columns corresponding 
+        /// to properties of CategoryViewDTOQuery.
+        /// </remarks>
+        public DbQuery<CategoryViewDTO> CategoryViewDTOQuery
+        {
+            get; set;
+        }
+        #endregion
+
+        
+
 
         #endregion DbQuery
 
 
-        
+
     }
 }
 

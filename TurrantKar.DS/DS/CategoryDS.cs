@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using TK.Data;
+using TurrantKar.Data;
 using TurrantKar.Common;
 using TurrantKar.DTO;
 using TurrantKar.Entity;
 using TurrantKar.Repository;
+using System.Collections.Generic;
 
 namespace TurrantKar.DS
 {
@@ -31,8 +30,20 @@ namespace TurrantKar.DS
         }
         #endregion
 
+        #region Get
         #region Get 
-        
+        public async Task<List<CategoryViewDTO>> GetCategoryList(CancellationToken token = default(CancellationToken))
+        {
+            return await _categoryRepository.GetCategoryList(token);
+        }
+
+        /// <inheritdoc />  
+        public async Task<CategoryViewDTO> GetCategoryDetailById(int categoryId, CancellationToken token = default(CancellationToken))
+        {
+            return await _categoryRepository.GetCategoryDetailById(categoryId, token);
+        }
+        #endregion
+
         #endregion
 
         #region Add 
@@ -49,10 +60,7 @@ namespace TurrantKar.DS
                 {
                     try
                     {
-                        //var filePath = Path.GetTempFileName();
-
-                        //Byte[] bytes = Convert.FromBase64String(model.FileUpload.FileAsBase64);
-                        //File.WriteAllBytes(filePath, bytes);
+                        Guid newGuid = Guid.NewGuid();
 
                         Category entity = CategoryDTO.MapToEntity(model);
                         UpdateSystemFieldsByOpType(entity, OperationType.Add);
@@ -61,13 +69,14 @@ namespace TurrantKar.DS
 
                         CategoryPictureMapping categoryPictureMapping = new CategoryPictureMapping();
                         categoryPictureMapping.CategoryId = category.Id;
-                        categoryPictureMapping.PictureId = Guid.NewGuid();
+                        categoryPictureMapping.PictureId = newGuid;
                         _categoryPictureMappingDS.UpdateSystemFieldsByOpType(categoryPictureMapping, OperationType.Add);
                          await _categoryPictureMappingDS.AddAsync(categoryPictureMapping, token);
 
                         _unitOfWork.SaveAll();
                         transaction.Commit();
                         commonRonsponseDTO.Id = category.Id;
+                        commonRonsponseDTO.GuidId = newGuid;
                     }
                     catch (Exception ex)
                     {
@@ -85,17 +94,43 @@ namespace TurrantKar.DS
         public async Task<ResponseModelDTO> UpdateCategoryAsync(CategoryDTO model, CancellationToken token = default(CancellationToken))
         {
             ResponseModelDTO commonRonsponseDTO = new ResponseModelDTO();
-            // Get existing Category.
-            Category entity = await _categoryRepository.GetAsync(model.Id, token);
-            if (entity != null & !entity.IsDeleted)
+
+            //Transaction Manage
+            using (TKDBContext context = new TKDBContext())
             {
-                //entity = CategoryDTO.MapToEntityWithEntity(model, entity);
-                UpdateSystemFieldsByOpType(entity, OperationType.Update);
-                await _categoryRepository.UpdateAsync(entity, entity.Id, token);
+                //Begin Trasaction
+                using (var transaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        // Get existing Category.
+                        Category entity = await _categoryRepository.GetAsync(model.Id, token);
+                        if (entity != null & !entity.IsDeleted)
+                        {
+                            entity = CategoryDTO.MapToEntityWithEntity(model, entity);
+                            UpdateSystemFieldsByOpType(entity, OperationType.Update);
+                            await _categoryRepository.UpdateAsync(entity, entity.Id, token);
+                        }
+                        if (model.IsNewGuid)
+                        {
+                            Guid newGuid = Guid.NewGuid();
+                            CategoryPictureMapping categoryPictureMapping = new CategoryPictureMapping();
+                            categoryPictureMapping.CategoryId = model.Id;
+                            categoryPictureMapping.PictureId = newGuid;
+                            _categoryPictureMappingDS.UpdateSystemFieldsByOpType(categoryPictureMapping, OperationType.Add);
+                            await _categoryPictureMappingDS.AddAsync(categoryPictureMapping, token);
+                        }
+                        _unitOfWork.SaveAll();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                    }
+
+                    return commonRonsponseDTO;
+                }
             }
-            _unitOfWork.SaveAll();
-           
-            return commonRonsponseDTO;
+            
         }
         #endregion
 

@@ -14,10 +14,11 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using TK.Entity;
-using TurrantKar.Common;
 
-namespace TK.Data
+using TurrantKar.Common;
+using TurrantKar.Entity;
+
+namespace TurrantKar.Data
 {
 
     /// <summary>

@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace TK.Data
+namespace TurrantKar.Data
 {
 
   public abstract class BaseDesignTimeDbContextFactory<TContext>:IDesignTimeDbContextFactory<TContext> where TContext : DbContext {

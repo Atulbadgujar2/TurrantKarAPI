@@ -14,7 +14,7 @@ namespace TurrantKar.DS
         
         Task<List<AddressDTO>> GetAddressListByCustomerId(int customerId, CancellationToken token = default(CancellationToken));
 
-        Task<AddressDTO> GetAddressDetailById(int AddressId, CancellationToken token = default(CancellationToken));
+        Task<AddressDTO> GetAddressDetailById(int addressId, CancellationToken token = default(CancellationToken));
 
         Task<ResponseModelDTO> AddAddressAsync(AddressDTO model, CancellationToken token = default(CancellationToken));
 

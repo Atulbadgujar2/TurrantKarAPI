@@ -26,6 +26,22 @@ namespace TurrantKar.WebAPI.Controllers
         }
         #endregion
 
+        #region Get
+        [HttpGet]
+        [Route("list")]
+        public async Task<List<CategoryViewDTO>> GetCategoryList(CancellationToken token = default(CancellationToken))
+        {
+            return await _categoryDS.GetCategoryList(token);
+        }
+
+        [HttpGet]
+        [Route("details/{id}")]
+        public async Task<CategoryViewDTO> GetCategoryDetailById([FromRoute] int id, CancellationToken token = default(CancellationToken))
+        {
+            return await _categoryDS.GetCategoryDetailById(id, token);
+        }
+
+        #endregion
         #region Add
         [HttpPost]
         [Route("add")]
@@ -36,10 +52,7 @@ namespace TurrantKar.WebAPI.Controllers
             //var file = Request.Form.Files[0];
             ResponseModelDTO responseModelDTO = await _categoryDS.AddCategoryAsync(model);
             responseId = responseModelDTO.Id;
-
-
             return responseId;
-
         }
 
         //[HttpPost("PostFile/{Id}")]
