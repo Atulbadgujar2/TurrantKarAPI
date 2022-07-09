@@ -23,7 +23,7 @@ namespace TurrantKar.Data
     public partial class TKDBContext
     {
         #region DbQuery  
-        #region Empty
+        #region Address
         /// <summary>
         /// This is use to get AddressDTO view data. Any linq queries against Microsoft.EntityFrameworkCore.DbQuery`1 
         /// is translated into database query.
@@ -53,8 +53,35 @@ namespace TurrantKar.Data
         }
         #endregion
 
-        
+        #region CustomerView
+        /// <summary>
+        /// This is use to get CategoryViewDTO view data. Any linq queries against Microsoft.EntityFrameworkCore.DbQuery`1 
+        /// is translated into database query.
+        /// </summary>
+        /// <remarks>
+        /// All database queries to get Microsoft.EntityFrameworkCore.DbQuery`1 should contains all the columns corresponding 
+        /// to properties of CustomerViewDTOQuery.
+        /// </remarks>
+        public DbQuery<CustomerViewDTO> CustomerViewDTOQuery
+        {
+            get; set;
+        }
+        #endregion
 
+        #region ProductView
+        /// <summary>
+        /// This is use to get ProductViewDTO view data. Any linq queries against Microsoft.EntityFrameworkCore.DbQuery`1 
+        /// is translated into database query.
+        /// </summary>
+        /// <remarks>
+        /// All database queries to get Microsoft.EntityFrameworkCore.DbQuery`1 should contains all the columns corresponding 
+        /// to properties of ProductViewDTOQuery.
+        /// </remarks>
+        public DbQuery<ProductViewDTO> ProductViewDTOQuery
+        {
+            get; set;
+        }
+        #endregion
 
         #endregion DbQuery
 

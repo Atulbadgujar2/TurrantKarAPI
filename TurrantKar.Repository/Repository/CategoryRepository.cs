@@ -19,23 +19,25 @@ namespace TurrantKar.Repository
         { }
         #endregion
 
+        #region Get
         /// <inheritdoc />  
         public async Task<List<CategoryViewDTO>> GetCategoryList(CancellationToken token = default(CancellationToken))
         {
-            string sql = "prc_GetAddressListByCustomerId, @IsDeleted";
-            SqlParameter paramDELETED = new SqlParameter("@IsDeleted", false);           
-            return await GetQueryEntityListAsync<CategoryViewDTO>(sql, new SqlParameter[] {  paramDELETED }, token);
+            string sql = "prc_GetCategoryByCategoryId @IsDeleted";
+            SqlParameter paramDELETED = new SqlParameter("@IsDeleted", false);
+            return await GetQueryEntityListAsync<CategoryViewDTO>(sql, new SqlParameter[] { paramDELETED }, token);
         }
 
         /// <inheritdoc />  
         public async Task<CategoryViewDTO> GetCategoryDetailById(int categoryId, CancellationToken token = default(CancellationToken))
         {
-            string sql = "prc_GetAddressByAddressId @AddressId , @IsDeleted";
+            string sql = "prc_GetCategoryByCategoryId @AddressId , @IsDeleted";
             SqlParameter paramDeleted = new SqlParameter("@IsDeleted", false);
             SqlParameter paramAddressId = new SqlParameter("@AddressId", categoryId);
             return await GetQueryEntityAsync<CategoryViewDTO>(sql, new SqlParameter[] { paramAddressId, paramDeleted }, token);
         }
 
+        #endregion
 
 
     }

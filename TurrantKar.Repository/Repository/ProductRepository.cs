@@ -1,5 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Threading;
+using System.Threading.Tasks;
 using TurrantKar.Data;
+using TurrantKar.DTO;
 using TurrantKar.Entity;
 
 namespace TurrantKar.Repository
@@ -15,6 +20,27 @@ namespace TurrantKar.Repository
 
         }
         #endregion
+
+        #region Get
+        /// <inheritdoc />  
+        public async Task<List<ProductViewDTO>> GetProductList(CancellationToken token = default(CancellationToken))
+        {
+            string sql = "prc_GetProductByProductId @IsDeleted";
+            SqlParameter paramDELETED = new SqlParameter("@IsDeleted", false);
+            return await GetQueryEntityListAsync<ProductViewDTO>(sql, new SqlParameter[] { paramDELETED }, token);
+        }
+
+        /// <inheritdoc />  
+        public async Task<ProductViewDTO> GetProductDetailById(int productId, CancellationToken token = default(CancellationToken))
+        {
+            string sql = "prc_GetProductByProductId @ProductId , @IsDeleted";
+            SqlParameter paramDeleted = new SqlParameter("@IsDeleted", false);
+            SqlParameter paramProductId = new SqlParameter("@ProductId", productId);
+            return await GetQueryEntityAsync<ProductViewDTO>(sql, new SqlParameter[] { paramProductId, paramDeleted }, token);
+        }
+
+        #endregion
+
     }
 }
 

@@ -30,7 +30,6 @@ namespace TurrantKar.DS
         }
         #endregion
 
-        #region Get
         #region Get 
         public async Task<List<CategoryViewDTO>> GetCategoryList(CancellationToken token = default(CancellationToken))
         {
@@ -42,8 +41,6 @@ namespace TurrantKar.DS
         {
             return await _categoryRepository.GetCategoryDetailById(categoryId, token);
         }
-        #endregion
-
         #endregion
 
         #region Add 

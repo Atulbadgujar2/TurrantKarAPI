@@ -6,6 +6,7 @@ using TurrantKar.Common;
 using TurrantKar.DTO;
 using TurrantKar.Entity;
 using TurrantKar.Repository;
+using System.Collections.Generic;
 
 namespace TurrantKar.DS
 {
@@ -32,8 +33,18 @@ namespace TurrantKar.DS
         #endregion
 
         #region Get 
+        public async Task<List<ProductViewDTO>> GetProductList(CancellationToken token = default(CancellationToken))
+        {
+            return await _productRepository.GetProductList(token);
+        }
 
+        /// <inheritdoc />  
+        public async Task<ProductViewDTO> GetProductDetailById(int productId, CancellationToken token = default(CancellationToken))
+        {
+            return await _productRepository.GetProductDetailById(productId, token);
+        }
         #endregion
+      
 
         #region Add 
         /// <inheritdoc /> 

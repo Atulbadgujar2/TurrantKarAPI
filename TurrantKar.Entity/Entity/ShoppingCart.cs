@@ -32,6 +32,8 @@ namespace TurrantKar.Entity
 
         public decimal OrderTotal { get; set; }
         public bool IsCoupanApplied { get; set; }
+
+        public bool Active { get; set; }
         public DateTime? RentalStartDateUtc { get; set; }
         public DateTime? RentalEndDateUtc { get; set; }
 

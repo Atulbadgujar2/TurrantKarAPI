@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using TurrantKar.DS;
@@ -21,6 +22,23 @@ namespace TurrantKar.WebAPI.Controllers
         {
             _productDS = productDS;
         }
+        #endregion
+
+        #region Get
+        [HttpGet]
+        [Route("list")]
+        public async Task<List<ProductViewDTO>> GetProductList(CancellationToken token = default(CancellationToken))
+        {
+            return await _productDS.GetProductList(token);
+        }
+
+        [HttpGet]
+        [Route("details/{id}")]
+        public async Task<ProductViewDTO> GetProductDetailById([FromRoute] int id, CancellationToken token = default(CancellationToken))
+        {
+            return await _productDS.GetProductDetailById(id, token);
+        }
+
         #endregion
 
         #region Add

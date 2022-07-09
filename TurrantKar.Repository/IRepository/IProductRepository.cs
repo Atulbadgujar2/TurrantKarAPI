@@ -1,4 +1,8 @@
-﻿using TurrantKar.Data;
+﻿using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using TurrantKar.Data;
+using TurrantKar.DTO;
 using TurrantKar.Entity;
 
 namespace TurrantKar.Repository
@@ -9,6 +13,9 @@ namespace TurrantKar.Repository
     /// </summary>
     public interface IProductRepository : IBaseRepository<Product>
     {
+        Task<List<ProductViewDTO>> GetProductList(CancellationToken token = default(CancellationToken));
+
+        Task<ProductViewDTO> GetProductDetailById(int productId, CancellationToken token = default(CancellationToken));
     }
 }
 

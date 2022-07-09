@@ -1,16 +1,10 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
 
-
-namespace TurrantKar.Entity
+namespace TurrantKar.DTO
 {
-
-    /// <summary>
-    /// this entity represting all ShoppingCartItem properties.
-    /// </summary>
-    [Table("ShoppingCartItem")]
-    public class ShoppingCartItem : BaseEntity
+    public class ShoppingCartItemDTO : BaseDTO
     {
+
         public int CustomerId { get; set; }
         public int ProductId { get; set; }
 
@@ -23,7 +17,6 @@ namespace TurrantKar.Entity
         public string QuantityMRP { get; set; }
         public DateTime? RentalStartDateUtc { get; set; }
         public DateTime? RentalEndDateUtc { get; set; }
-
 
         public bool Active { get; set; }
     }

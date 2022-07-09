@@ -17,5 +17,11 @@ namespace TurrantKar.DTO
         public int Quantity { get; set; }
         public DateTime? RentalStartDateUtc { get; set; }
         public DateTime? RentalEndDateUtc { get; set; }
+
+        public bool Active { get; set; }
+
+        public ShoppingCartItemDTO shopCartItem { get; set; }
+
+        
     }
 }

@@ -7,6 +7,7 @@ using TurrantKar.Common;
 using TurrantKar.DTO;
 using TurrantKar.Entity;
 using TurrantKar.Repository;
+using System.Collections.Generic;
 
 namespace TurrantKar.DS
 {
@@ -29,7 +30,10 @@ namespace TurrantKar.DS
         #endregion
 
         #region Get 
-
+        public async Task<List<CustomerViewDTO>> GetCustomerList(CancellationToken token = default(CancellationToken))
+        {
+            return await _customerRepository.GetCustomerList(token);
+        }
         #endregion
 
         #region Add 

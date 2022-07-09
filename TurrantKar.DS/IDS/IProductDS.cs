@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using TurrantKar.DTO;
 using TurrantKar.Entity;
@@ -10,6 +11,10 @@ namespace TurrantKar.DS
     /// </summary>
     public interface IProductDS : IBaseDS<Product>
     {
+        Task<List<ProductViewDTO>> GetProductList(CancellationToken token = default(CancellationToken));
+
+        Task<ProductViewDTO> GetProductDetailById(int productId, CancellationToken token = default(CancellationToken));
+
         Task<ResponseModelDTO> AddProductAsync(ProductDTO model, CancellationToken token = default(CancellationToken));
 
         Task<ResponseModelDTO> UpdateProductAsync(ProductDTO model, CancellationToken token = default(CancellationToken));
