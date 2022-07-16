@@ -9,12 +9,28 @@ namespace TurrantKar.DTO
     public class ShoppingCartDTO : BaseDTO
     {
         public int CustomerId { get; set; }
-        public int ProductId { get; set; }
+
         public int StoreId { get; set; }
         public int ShoppingCartTypeId { get; set; }
-        public string AttributesXml { get; set; }
+
         public decimal CustomerEnteredPrice { get; set; }
-        public int Quantity { get; set; }
+
+        public string DeliveryChargeUrl { get; set; }
+
+        public string DeliveryCharge { get; set; }
+
+        public string CartItemCount { get; set; }
+
+        public string DeliveryLimit { get; set; }
+
+        public string BagTotal { get; set; }
+
+        public string CartTotal { get; set; }
+
+        public string CartSaving { get; set; }
+
+        public string OrderTotal { get; set; }
+
         public DateTime? RentalStartDateUtc { get; set; }
         public DateTime? RentalEndDateUtc { get; set; }
 
@@ -22,6 +38,6 @@ namespace TurrantKar.DTO
 
         public ShoppingCartItemDTO shopCartItem { get; set; }
 
-        
+
     }
 }

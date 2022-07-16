@@ -5,6 +5,14 @@ namespace TurrantKar.DTO
     public class ShoppingCartItemDTO : BaseDTO
     {
 
+        public string VirtualPath { get; set; }
+        public string Name { get; set; }
+
+        public string ShortDescription { get; set; }
+        public decimal Price { get; set; }
+        public decimal DiscountPrice { get; set; }
+        public int PricePerQuantity { get; set; }
+
         public int CustomerId { get; set; }
         public int ProductId { get; set; }
 
