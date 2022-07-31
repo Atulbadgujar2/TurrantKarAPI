@@ -24,19 +24,61 @@ namespace TurrantKar.Repository
         /// <inheritdoc />  
         public async Task<List<AddressDTO>> GetAddressListByCustomerId(int customerId, CancellationToken token = default(CancellationToken))
         {
-            string sql = "prc_GetAddressListByCustomerId @CustomerId, @IsDeleted";
+            string sql = @"SELECT a.[Id]
+                              , a.[CreatedOn]
+                              ,a.[CreatedBy]
+                              ,a.[ModifiedOn]
+                              ,a.[ModifiedBy]
+                              ,a.[IsDeleted]
+                              ,a.[TenantId]
+                              ,a.[FirstName]
+                              ,a.[LastName]
+                              ,a.[Email]
+                              ,a.[Company]
+                              ,a.[County]
+                              ,a.[City]
+                              ,a.[Address1]
+                              ,a.[Address2]
+                              ,a.[ZipPostalCode]
+                              ,a.[PhoneNumber]
+                              ,a.[FaxNumber]
+                              ,ca.[CustomerId]  
+                          FROM [dbo].[Address] a
+                          INNER JOIN [CustomerAddresses] ca on ca.AddressId = a.Id
+                          WHERE a.IsDeleted = @IsDeleted AND ca.CustomerId = @CustomerId";
             SqlParameter paramDELETED = new SqlParameter("@IsDeleted", false);
             SqlParameter paramCustomerId = new SqlParameter("@CustomerId", customerId);
-            return await GetQueryEntityListAsync<AddressDTO>(sql, new SqlParameter[] { paramCustomerId,paramDELETED }, token);
+            return await GetQueryEntityListAsync<AddressDTO>(sql, new SqlParameter[] { paramCustomerId, paramDELETED }, token);
         }
 
         /// <inheritdoc />  
         public async Task<AddressDTO> GetAddressDetailById(int addressId, CancellationToken token = default(CancellationToken))
         {
-            string sql = "prc_GetAddressByAddressId @AddressId , @IsDeleted";
+            string sql = @"SELECT a.[Id]
+                              , a.[CreatedOn]
+                              ,a.[CreatedBy]
+                              ,a.[ModifiedOn]
+                              ,a.[ModifiedBy]
+                              ,a.[IsDeleted]
+                              ,a.[TenantId]
+                              ,a.[FirstName]
+                              ,a.[LastName]
+                              ,a.[Email]
+                              ,a.[Company]
+                              ,a.[County]
+                              ,a.[City]
+                              ,a.[Address1]
+                              ,a.[Address2]
+                              ,a.[ZipPostalCode]
+                              ,a.[PhoneNumber]
+                              ,a.[FaxNumber]
+                              ,ca.[CustomerId]
+                          FROM [dbo].[Address] a
+                          INNER JOIN [CustomerAddresses] ca on ca.AddressId = a.Id
+                          WHERE a.IsDeleted = @IsDeleted AND ca.AddressId = @AddressId";
             SqlParameter paramDeleted = new SqlParameter("@IsDeleted", false);
             SqlParameter paramAddressId = new SqlParameter("@AddressId", addressId);
-            return await GetQueryEntityAsync<AddressDTO>(sql, new SqlParameter[] {  paramAddressId, paramDeleted }, token);
+            return await GetQueryEntityAsync<AddressDTO>(sql, new SqlParameter[] { paramAddressId, paramDeleted }, token);
         }
 
     }
