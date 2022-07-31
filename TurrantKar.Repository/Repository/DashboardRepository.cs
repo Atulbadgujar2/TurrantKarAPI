@@ -25,7 +25,12 @@ namespace TurrantKar.Repository
         /// <inheritdoc />  
         public async Task<DashboardDTO> GetDashboardDetail(CancellationToken token = default(CancellationToken))
         {
-            string sql = "[prc_GetDashboardData] @IsDeleted";
+            string sql = @"SELECT COUNT (p.[Id]) AS TotalProducts,
+                    (SELECT COUNT(c.[Id]) FROM Category c WHERE p.IsDeleted = @IsDeleted) AS TotalCategories,
+                    (SELECT COUNT(cu.[Id]) FROM Customer cu WHERE p.IsDeleted = @IsDeleted ) AS TotalUsers,
+                    (SELECT COUNT(o.[Id]) FROM[Order] o WHERE p.IsDeleted = @IsDeleted ) AS TotalOrders
+                    FROM[dbo].[Product] p
+                    WHERE p.IsDeleted = @IsDeleted ";
             SqlParameter paramDeleted = new SqlParameter("@IsDeleted", false);
     
             return await GetQueryEntityAsync<DashboardDTO>(sql, new SqlParameter[] { paramDeleted }, token);

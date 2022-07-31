@@ -24,7 +24,21 @@ namespace TurrantKar.Repository
         /// <inheritdoc />  
         public async Task<List<CustomerViewDTO>> GetCustomerList(CancellationToken token = default(CancellationToken))
         {
-            string sql = "prc_GetCustomerList @IsDeleted";
+            string sql = @"SELECT c.[Id]
+                                  , c.[CreatedOn]
+                                  ,c.[CreatedBy]
+                                  ,c.[ModifiedOn]
+                                  ,c.[ModifiedBy]
+                                  ,c.[IsDeleted]
+                                  ,c.[TenantId]
+                                  ,c.[Username]
+                                  ,c.[Email]
+                                  ,c.[FirstName]
+                                  ,c.[LastName]
+	                              ,c.[PhoneNumber]
+	                              ,c.[Gender]
+                                FROM [dbo].[Customer] c
+                                WHERE c.IsDeleted = @IsDeleted";
             SqlParameter paramDELETED = new SqlParameter("@IsDeleted", false);
             return await GetQueryEntityListAsync<CustomerViewDTO>(sql, new SqlParameter[] { paramDELETED }, token);
         }

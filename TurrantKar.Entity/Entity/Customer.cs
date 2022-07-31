@@ -33,6 +33,13 @@ namespace TurrantKar.Entity
       public DateTime? LastLoginDateUtc{get;set;}
       public DateTime LastActivityDateUtc {get;set;}
       public int RegisteredInStoreId{get;set;}
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
+        public string PhoneNumber { get; set; }
+        public string Gender { get; set; }
+
     }
 }
 

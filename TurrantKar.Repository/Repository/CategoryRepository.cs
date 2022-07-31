@@ -23,7 +23,24 @@ namespace TurrantKar.Repository
         /// <inheritdoc />  
         public async Task<List<CategoryViewDTO>> GetCategoryList(CancellationToken token = default(CancellationToken))
         {
-            string sql = "prc_GetCategoryByCategoryId @IsDeleted";
+            string sql = @"SELECT c.[Id]
+                                  , c.[CreatedOn]
+                                  ,c.[CreatedBy]
+                                  ,c.[ModifiedOn]
+                                  ,c.[ModifiedBy]
+                                  ,c.[IsDeleted]
+                                  ,c.[TenantId]
+                                  ,c.[Name]
+                                  ,c.[Description]
+                                  ,c.[ShowOnHomepage]
+                                  ,c.[IncludeInTopMenu]
+                                  ,c.[Discount]
+	                              ,p.SeoFilename AS FileName
+	                              ,p.VirtualPath AS ImageUrl
+                              FROM [dbo].[Category] c
+                              INNER JOIN CategoryPictureMapping cpm on cpm.CategoryId = c.Id
+                              INNER JOIN Picture p on cpm.PictureId = p.PictureGuidId
+                              WHERE c.IsDeleted = @IsDeleted ";
             SqlParameter paramDELETED = new SqlParameter("@IsDeleted", false);
             return await GetQueryEntityListAsync<CategoryViewDTO>(sql, new SqlParameter[] { paramDELETED }, token);
         }
@@ -31,9 +48,26 @@ namespace TurrantKar.Repository
         /// <inheritdoc />  
         public async Task<CategoryViewDTO> GetCategoryDetailById(int categoryId, CancellationToken token = default(CancellationToken))
         {
-            string sql = "prc_GetCategoryByCategoryId @AddressId , @IsDeleted";
+            string sql = @"SELECT c.[Id]
+                                  , c.[CreatedOn]
+                                  ,c.[CreatedBy]
+                                  ,c.[ModifiedOn]
+                                  ,c.[ModifiedBy]
+                                  ,c.[IsDeleted]
+                                  ,c.[TenantId]
+                                  ,c.[Name]
+                                  ,c.[Description]
+                                  ,c.[ShowOnHomepage]
+                                  ,c.[IncludeInTopMenu]
+                                  ,c.[Discount]
+	                              ,p.SeoFilename AS FileName
+	                              ,p.VirtualPath AS ImageUrl
+                              FROM [dbo].[Category] c
+                              INNER JOIN CategoryPictureMapping cpm on cpm.CategoryId = c.Id
+                              INNER JOIN Picture p on cpm.PictureId = p.PictureGuidId
+                              WHERE c.IsDeleted = @IsDeleted AND c.Id = @CategoryId";
             SqlParameter paramDeleted = new SqlParameter("@IsDeleted", false);
-            SqlParameter paramAddressId = new SqlParameter("@AddressId", categoryId);
+            SqlParameter paramAddressId = new SqlParameter("@CategoryId", categoryId);
             return await GetQueryEntityAsync<CategoryViewDTO>(sql, new SqlParameter[] { paramAddressId, paramDeleted }, token);
         }
 
