@@ -12,7 +12,7 @@
 
 using System.Threading.Tasks;
 
-namespace TurrantKar.Data
+namespace TurrantKar.Repository
 {
 
 

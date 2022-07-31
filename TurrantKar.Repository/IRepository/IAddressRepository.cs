@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using TurrantKar.Data;
+using TurrantKar.Repository;
 using TurrantKar.DTO;
 using TurrantKar.Entity;
 

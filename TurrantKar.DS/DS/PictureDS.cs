@@ -2,7 +2,7 @@
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using TurrantKar.Data;
+using TurrantKar.Repository;
 using TurrantKar.Common;
 using TurrantKar.DTO;
 using TurrantKar.Entity;

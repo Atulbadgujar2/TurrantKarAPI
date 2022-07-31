@@ -22,7 +22,7 @@ using System.Threading.Tasks;
 using TurrantKar.Common;
 using TurrantKar.Entity;
 
-namespace TurrantKar.Data
+namespace TurrantKar.Repository
 {
 
     /// <summary>

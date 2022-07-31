@@ -11,7 +11,7 @@
 using Microsoft.EntityFrameworkCore;
 
 
-namespace TurrantKar.Data
+namespace TurrantKar.Repository
 {
 
     public class TKDesignTimeDbContextFactory:BaseDesignTimeDbContextFactory<TKDBContext> {

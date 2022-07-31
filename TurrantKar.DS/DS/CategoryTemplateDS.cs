@@ -1,4 +1,4 @@
-﻿using TurrantKar.Data;
+﻿using TurrantKar.Repository;
 using TurrantKar.Entity;
 using TurrantKar.Repository;
 

@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using TurrantKar.DTO;
 using TurrantKar.Entity;
 
-namespace TurrantKar.Data
+namespace TurrantKar.Repository
 {
 
     /// <summary>  

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
-using TurrantKar.Data;
+using TurrantKar.Repository;
 using TurrantKar.Entity;
 
 namespace TurrantKar.Repository

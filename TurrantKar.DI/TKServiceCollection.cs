@@ -15,7 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using System.IO;
-using TurrantKar.Data;
+using TurrantKar.Repository;
 using TurrantKar.Common;
 using TurrantKar.DS;
 using TurrantKar.EH;

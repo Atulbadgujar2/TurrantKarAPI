@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using TurrantKar.Data;
+using TurrantKar.Repository;
 
 using TurrantKar.Common;
 using TurrantKar.Entity;

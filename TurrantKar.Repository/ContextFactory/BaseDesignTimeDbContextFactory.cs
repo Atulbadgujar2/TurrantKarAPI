@@ -14,7 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace TurrantKar.Data
+namespace TurrantKar.Repository
 {
 
   public abstract class BaseDesignTimeDbContextFactory<TContext>:IDesignTimeDbContextFactory<TContext> where TContext : DbContext {
@@ -41,7 +41,7 @@ namespace TurrantKar.Data
 
       var config = builder.Build();
 
-      var connstr = config.GetConnectionString("DefaultConnection");
+      var connstr = config.GetConnectionString("SqlConnection");
       _conString = connstr;
       if(String.IsNullOrWhiteSpace(connstr) == true) {
         throw new InvalidOperationException("Could not find a connection string named 'default'.");
