@@ -1,12 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using TurrantKar.Repository;
 using TurrantKar.Common;
 using TurrantKar.DTO;
 using TurrantKar.Entity;
 using TurrantKar.Repository;
-using System.Collections.Generic;
 
 namespace TurrantKar.DS
 {
@@ -133,11 +132,11 @@ namespace TurrantKar.DS
                         if (model.IsNewGuid)
                         {
                             Guid newGuid = Guid.NewGuid();
-                            ProductPictureMapping productPictureMapping = new ProductPictureMapping();
+                            ProductPictureMapping productPictureMapping = await _productPictureMappingDS.FindAsync(i => i.ProductId == model.Id, token);                          
                             productPictureMapping.ProductId = model.Id;
                             productPictureMapping.PictureId = newGuid;
                             _productPictureMappingDS.UpdateSystemFieldsByOpType(productPictureMapping, OperationType.Add);
-                            await _productPictureMappingDS.AddAsync(productPictureMapping, token);
+                            await _productPictureMappingDS.UpdateAsync(productPictureMapping, productPictureMapping.Id, token);                           
                         }
                         _unitOfWork.SaveAll();
                     }

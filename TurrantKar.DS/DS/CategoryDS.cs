@@ -111,13 +111,22 @@ namespace TurrantKar.DS
                         if (model.IsNewGuid)
                         {
                             Guid newGuid = Guid.NewGuid();
-                            CategoryPictureMapping categoryPictureMapping = new CategoryPictureMapping();
-                            categoryPictureMapping.CategoryId = model.Id;
-                            categoryPictureMapping.PictureId = newGuid;
-                            _categoryPictureMappingDS.UpdateSystemFieldsByOpType(categoryPictureMapping, OperationType.Add);
-                            await _categoryPictureMappingDS.AddAsync(categoryPictureMapping, token);
+                            // Get existing Category.
+                            CategoryPictureMapping categoryPictureMapping = await _categoryPictureMappingDS.FindAsync(i => i.CategoryId == model.Id, token);
+                            if (entity != null & !entity.IsDeleted)
+                            {
+                                categoryPictureMapping.PictureId = newGuid;
+                                _categoryPictureMappingDS.UpdateSystemFieldsByOpType(categoryPictureMapping, OperationType.Update);
+                                await _categoryPictureMappingDS.UpdateAsync(categoryPictureMapping, entity.Id, token);
+                            }
+                            commonRonsponseDTO.Id = model.Id;
+                            commonRonsponseDTO.GuidId = newGuid;
+
+
                         }
+                       
                         _unitOfWork.SaveAll();
+                        
                     }
                     catch (Exception ex)
                     {

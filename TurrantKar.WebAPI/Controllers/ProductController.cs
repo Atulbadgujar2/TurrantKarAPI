@@ -54,5 +54,39 @@ namespace TurrantKar.WebAPI.Controllers
             return responseId;
         }
         #endregion
+
+        #region Update
+
+        /// <summary>
+        /// Update the Product
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route("update")]
+        public async Task<ResponseModelDTO> UpdateProductAsync([FromBody] ProductDTO model, CancellationToken token = default(CancellationToken))
+        {
+            ResponseModelDTO responseModelDTO = await _productDS.UpdateProductAsync(model);
+            return responseModelDTO;
+        }
+
+
+        #endregion Update
+
+        #region Delete method
+
+        /// <summary>
+        /// delete Address
+        /// </summary>
+        /// <param name="model"></param       
+        /// <returns></returns>
+        [HttpPut]
+        [Route("delete")]
+        public async Task<ResponseModelDTO> DeleteAddressAsync([FromBody] IdentificationDTO model, CancellationToken token = default(CancellationToken))
+        {
+            return await _productDS.DeleteProductAsync(model);
+        }
+
+        #endregion Delete method
     }
 }

@@ -32,6 +32,7 @@ namespace TurrantKar.DTO
             entity.IsNew = true;
             entity.SeoFilename = model.FileName;
             entity.VirtualPath = model.VirtualPath;
+            entity.PictureGuidId = model.PictureGuidId;
             return entity;
         }
     }

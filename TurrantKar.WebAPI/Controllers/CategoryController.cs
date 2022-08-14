@@ -45,36 +45,47 @@ namespace TurrantKar.WebAPI.Controllers
         #region Add
         [HttpPost]
         [Route("add")]
-        public async Task<int> AddCategoryAsync(CategoryDTO model, CancellationToken token = default(CancellationToken))
+        public async Task<ResponseModelDTO> AddCategoryAsync(CategoryDTO model, CancellationToken token = default(CancellationToken))
         {
-
-            int responseId = 0;
-            //var file = Request.Form.Files[0];
             ResponseModelDTO responseModelDTO = await _categoryDS.AddCategoryAsync(model);
-            responseId = responseModelDTO.Id;
-            return responseId;
+            return responseModelDTO;
         }
 
-        //[HttpPost("PostFile/{Id}")]
-        //public ActionResult PostFile(IFormFile uploadedFile)
-        //{
-        //    try {
-        //        var saveFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Attachment");
-        //        string FileExtn = Path.GetExtension(uploadedFile.FileName);
-        //        string uniqueFileName = Guid.NewGuid().ToString() + FileExtn;
-        //        string filePath = Path.Combine(saveFilePath, uniqueFileName);
-               
-        //        using (var stream = new FileStream(filePath, FileMode.Create))
-        //        {
-        //             uploadedFile.CopyTo(stream);
-        //        }
-        //    }
-        //    catch(Exception ex)
-        //    {
-
-        //    }
-        //    return Ok();
-        //}
         #endregion
+
+
+        #region Update
+
+        /// <summary>
+        /// Update the holdiays
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route("update")]
+        public async Task<ResponseModelDTO> UpdateCategoryAsync([FromBody] CategoryDTO model, CancellationToken token = default(CancellationToken))
+        {
+            ResponseModelDTO responseModelDTO = await _categoryDS.UpdateCategoryAsync(model);
+            return responseModelDTO;
+        }
+
+
+        #endregion Update
+
+        #region Delete method
+
+        /// <summary>
+        /// delete Category
+        /// </summary>
+        /// <param name="model"></param       
+        /// <returns></returns>
+        [HttpPut]
+        [Route("delete")]
+        public async Task<ResponseModelDTO> DeleteCategoryAsync([FromBody] IdentificationDTO model, CancellationToken token = default(CancellationToken))
+        {
+            return await _categoryDS.DeleteCategoryAsync(model);
+        }
+
+        #endregion Delete method
     }
 }

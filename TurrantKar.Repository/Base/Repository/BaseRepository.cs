@@ -449,8 +449,8 @@ namespace TurrantKar.Repository
                 if (includeOptions.HasFlag(SystemFieldMask.CREATED_BY))
                 {
                     //sysEntityFields.CREATED_BY = TKConstant.TENANT_USER_ID.ToString();
-                    sysEntityFields.CreatedBy = Convert.ToInt32(_httpContextAccessor.HttpContext.Request.Headers[_identityAssignedId]);
-
+                    //sysEntityFields.CreatedBy = Convert.ToInt32(_httpContextAccessor.HttpContext.Request.Headers[_identityAssignedId]);
+                    sysEntityFields.CreatedBy = 1;
                     //sysEntityFields.CREATED_BY = _session.GetString("CurrentIdentityUser");
 
                 }
@@ -465,8 +465,8 @@ namespace TurrantKar.Repository
                 if (includeOptions.HasFlag(SystemFieldMask.MODIFIED_BY))
                 {
                     //sysEntityFields.MODIFIED_BY = TKConstant.TENANT_USER_ID.ToString();
-                    sysEntityFields.ModifiedBy = Convert.ToInt32(_httpContextAccessor.HttpContext.Request.Headers[_identityAssignedId]);
-
+                    //sysEntityFields.ModifiedBy = Convert.ToInt32(_httpContextAccessor.HttpContext.Request.Headers[_identityAssignedId]);
+                    sysEntityFields.ModifiedBy = 1;
                     //string ab = _httpContextAccessor.HttpContext.Request.Cookies["IdentityUser"];
                     //sysEntityFields.MODIFIED_BY = _session.GetString("CurrentIdentityUser");
                     //sysEntityFields.MODIFIED_BY = _httpContextAccessor.HttpContext.Request.Cookies["IdentityUser"];

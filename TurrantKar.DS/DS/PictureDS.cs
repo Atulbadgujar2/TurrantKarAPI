@@ -2,7 +2,6 @@
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using TurrantKar.Repository;
 using TurrantKar.Common;
 using TurrantKar.DTO;
 using TurrantKar.Entity;
@@ -72,8 +71,8 @@ namespace TurrantKar.DS
                         PictureBinary pictureBinary = new PictureBinary();
                         pictureBinary.PictureId = pictureEntity.Id;
                         pictureBinary.BinaryData = theFile.FileAsByteArray;
-                        _pictureBinaryDS.UpdateSystemFieldsByOpType(pictureBinary, OperationType.Add);
-                        await _pictureBinaryDS.AddAsync(pictureBinary, token);
+                        //_pictureBinaryDS.UpdateSystemFieldsByOpType(pictureBinary, OperationType.Add);
+                        //await _pictureBinaryDS.AddAsync(pictureBinary, token);
 
                         _unitOfWork.SaveAll();
                         transaction.Commit();
