@@ -23,7 +23,7 @@ namespace TurrantKar.Repository
 
         #region Get
         /// <inheritdoc />  
-        public async Task<List<ProductViewDTO>> GetProductList(bool showHomePage, CancellationToken token = default(CancellationToken))
+        public async Task<List<ProductViewDTO>> GetProductList(bool showHomePage, int categoryId, CancellationToken token = default(CancellationToken))
         {
             string bindedString = null;
             string sql = @"SELECT p.[Id]
@@ -62,6 +62,13 @@ namespace TurrantKar.Repository
                 SqlParameter paramDELETED = new SqlParameter("@IsDeleted", false);
                 SqlParameter paramShowHomePage = new SqlParameter("@ShowHomePage", showHomePage);
                 return await GetQueryEntityListAsync<ProductViewDTO>(bindedString, new SqlParameter[] { paramDELETED, paramShowHomePage }, token);
+            }
+            else if (categoryId > 0)
+            {
+                bindedString = sql + "WHERE p.IsDeleted = @IsDeleted AND c.Id = @CategoryId";
+                SqlParameter paramDELETED = new SqlParameter("@IsDeleted", false);
+                SqlParameter paramCategoryId = new SqlParameter("@CategoryId", categoryId);
+                return await GetQueryEntityListAsync<ProductViewDTO>(bindedString, new SqlParameter[] { paramDELETED }, token);
             }
             else
             {

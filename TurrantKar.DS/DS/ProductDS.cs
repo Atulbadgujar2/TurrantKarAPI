@@ -32,9 +32,9 @@ namespace TurrantKar.DS
         #endregion
 
         #region Get 
-        public async Task<List<ProductViewDTO>> GetProductList(bool showHomePage, CancellationToken token = default(CancellationToken))
+        public async Task<List<ProductViewDTO>> GetProductList(bool showHomePage, int categoryId, CancellationToken token = default(CancellationToken))
         {
-            return await _productRepository.GetProductList(showHomePage,token);
+            return await _productRepository.GetProductList(showHomePage, categoryId,token);
         }
 
         /// <inheritdoc />  

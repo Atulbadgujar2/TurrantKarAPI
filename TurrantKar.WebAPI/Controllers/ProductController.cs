@@ -27,9 +27,9 @@ namespace TurrantKar.WebAPI.Controllers
         #region Get
         [HttpGet]
         [Route("list")]
-        public async Task<List<ProductViewDTO>> GetProductList(bool showHomePage = false, CancellationToken token = default(CancellationToken))
+        public async Task<List<ProductViewDTO>> GetProductList(bool showHomePage = false,int categoryId = 0, CancellationToken token = default(CancellationToken))
         {
-            return await _productDS.GetProductList(showHomePage,token);
+            return await _productDS.GetProductList(showHomePage,categoryId, token);
         }
 
         [HttpGet]

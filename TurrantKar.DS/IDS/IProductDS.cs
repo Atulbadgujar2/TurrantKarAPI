@@ -11,7 +11,7 @@ namespace TurrantKar.DS
     /// </summary>
     public interface IProductDS : IBaseDS<Product>
     {
-        Task<List<ProductViewDTO>> GetProductList(bool showHomePage, CancellationToken token = default(CancellationToken));
+        Task<List<ProductViewDTO>> GetProductList(bool showHomePage, int categoryId, CancellationToken token = default(CancellationToken));
 
         Task<ProductViewDTO> GetProductDetailById(int productId, CancellationToken token = default(CancellationToken));
 
