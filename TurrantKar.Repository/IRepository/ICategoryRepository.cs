@@ -13,7 +13,7 @@ namespace TurrantKar.Repository
     /// </summary>
     public interface ICategoryRepository : IBaseRepository<Category>
     {
-        Task<List<CategoryViewDTO>> GetCategoryList(CancellationToken token = default(CancellationToken));
+        Task<List<CategoryViewDTO>> GetCategoryList(bool showHomePage, bool includeTopMenu, CancellationToken token = default(CancellationToken));
 
         Task<CategoryViewDTO> GetCategoryDetailById(int categoryId, CancellationToken token = default(CancellationToken));
     }

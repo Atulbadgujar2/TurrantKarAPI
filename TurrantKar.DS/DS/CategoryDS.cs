@@ -31,9 +31,9 @@ namespace TurrantKar.DS
         #endregion
 
         #region Get 
-        public async Task<List<CategoryViewDTO>> GetCategoryList(CancellationToken token = default(CancellationToken))
+        public async Task<List<CategoryViewDTO>> GetCategoryList(bool showHomePage, bool includeTopMenu, CancellationToken token = default(CancellationToken))
         {
-            return await _categoryRepository.GetCategoryList(token);
+            return await _categoryRepository.GetCategoryList(showHomePage, includeTopMenu, token);
         }
 
         /// <inheritdoc />  

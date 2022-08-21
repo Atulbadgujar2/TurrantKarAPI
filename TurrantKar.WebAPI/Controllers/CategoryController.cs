@@ -29,9 +29,9 @@ namespace TurrantKar.WebAPI.Controllers
         #region Get
         [HttpGet]
         [Route("list")]
-        public async Task<List<CategoryViewDTO>> GetCategoryList(CancellationToken token = default(CancellationToken))
+        public async Task<List<CategoryViewDTO>> GetCategoryList(bool showHomePage = false, bool includeTopMenu = false, CancellationToken token = default(CancellationToken))
         {
-            return await _categoryDS.GetCategoryList(token);
+            return await _categoryDS.GetCategoryList(showHomePage, includeTopMenu, token);
         }
 
         [HttpGet]

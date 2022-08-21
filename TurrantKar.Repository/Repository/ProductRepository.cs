@@ -23,8 +23,9 @@ namespace TurrantKar.Repository
 
         #region Get
         /// <inheritdoc />  
-        public async Task<List<ProductViewDTO>> GetProductList(CancellationToken token = default(CancellationToken))
+        public async Task<List<ProductViewDTO>> GetProductList(bool showHomePage, CancellationToken token = default(CancellationToken))
         {
+            string bindedString = null;
             string sql = @"SELECT p.[Id]
                                   , p.[CreatedOn]
                                   ,p.[CreatedBy]
@@ -46,14 +47,29 @@ namespace TurrantKar.Repository
                                   ,p.[OnlySupportedPincode]
                                   ,p.[Tag]
                                   ,p.[StockQuantity]
-	                              ,p.SeoFilename AS FileName
-	                              ,p.VirtualPath AS ImageUrl
+	                              ,pc.SeoFilename AS FileName
+	                              ,pc.VirtualPath AS ImageUrl 
+                                  ,c.Name As CategoryName
+								  ,c.Id As CategoryId
                               FROM [dbo].[Product] p
-                              INNER JOIN ProductPictureMapping ppm on ppm.PictureId = p.Id
-                              INNER JOIN Picture pc on ppm.PictureId = pc.PictureGuidId
-                              WHERE p.IsDeleted = @IsDeleted ";
-            SqlParameter paramDELETED = new SqlParameter("@IsDeleted", false);
-            return await GetQueryEntityListAsync<ProductViewDTO>(sql, new SqlParameter[] { paramDELETED }, token);
+							  INNER JOIN ProductCategoryMapping pcm on pcm.ProductId = p.Id
+							  INNER JOIN Category c on c.id = pcm.CategoryId
+                              INNER JOIN ProductPictureMapping ppm on ppm.ProductId = p.Id
+                              INNER JOIN Picture pc on ppm.PictureId = pc.PictureGuidId ";
+            if (showHomePage)
+            {
+                bindedString = sql + "WHERE p.IsDeleted = @IsDeleted AND p.[ShowOnHomepage] = @ShowHomePage";
+                SqlParameter paramDELETED = new SqlParameter("@IsDeleted", false);
+                SqlParameter paramShowHomePage = new SqlParameter("@ShowHomePage", showHomePage);
+                return await GetQueryEntityListAsync<ProductViewDTO>(bindedString, new SqlParameter[] { paramDELETED, paramShowHomePage }, token);
+            }
+            else
+            {
+                bindedString = sql + "WHERE p.IsDeleted = @IsDeleted";
+                SqlParameter paramDELETED = new SqlParameter("@IsDeleted", false);
+                return await GetQueryEntityListAsync<ProductViewDTO>(bindedString, new SqlParameter[] { paramDELETED }, token);
+            }
+           
         }
 
         /// <inheritdoc />  
@@ -80,10 +96,14 @@ namespace TurrantKar.Repository
                                   ,p.[OnlySupportedPincode]
                                   ,p.[Tag]
                                   ,p.[StockQuantity]
-	                              ,p.SeoFilename AS FileName
-	                              ,p.VirtualPath AS ImageUrl
+	                             ,pc.SeoFilename AS FileName
+	                              ,pc.VirtualPath AS ImageUrl 
+                                  ,c.Name As CategoryName
+								  ,c.Id As CategoryId
                               FROM [dbo].[Product] p
-                              INNER JOIN ProductPictureMapping ppm on ppm.PictureId = p.Id
+							  INNER JOIN ProductCategoryMapping pcm on pcm.ProductId = p.Id
+							  INNER JOIN Category c on c.id = pcm.CategoryId
+                              INNER JOIN ProductPictureMapping ppm on ppm.ProductId = p.Id
                               INNER JOIN Picture pc on ppm.PictureId = pc.PictureGuidId
                               WHERE p.IsDeleted = @IsDeleted AND p.Id = @ProductId";
             SqlParameter paramDeleted = new SqlParameter("@IsDeleted", false);

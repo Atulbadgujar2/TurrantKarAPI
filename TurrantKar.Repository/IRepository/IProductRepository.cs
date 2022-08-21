@@ -13,7 +13,7 @@ namespace TurrantKar.Repository
     /// </summary>
     public interface IProductRepository : IBaseRepository<Product>
     {
-        Task<List<ProductViewDTO>> GetProductList(CancellationToken token = default(CancellationToken));
+        Task<List<ProductViewDTO>> GetProductList(bool showHomePage, CancellationToken token = default(CancellationToken));
 
         Task<ProductViewDTO> GetProductDetailById(int productId, CancellationToken token = default(CancellationToken));
     }

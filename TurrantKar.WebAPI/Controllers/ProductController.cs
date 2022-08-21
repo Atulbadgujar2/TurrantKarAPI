@@ -27,9 +27,9 @@ namespace TurrantKar.WebAPI.Controllers
         #region Get
         [HttpGet]
         [Route("list")]
-        public async Task<List<ProductViewDTO>> GetProductList(CancellationToken token = default(CancellationToken))
+        public async Task<List<ProductViewDTO>> GetProductList(bool showHomePage = false, CancellationToken token = default(CancellationToken))
         {
-            return await _productDS.GetProductList(token);
+            return await _productDS.GetProductList(showHomePage,token);
         }
 
         [HttpGet]
@@ -44,14 +44,14 @@ namespace TurrantKar.WebAPI.Controllers
         #region Add
         [HttpPost]
         [Route("add")]
-        public async Task<Guid> AddProductAsync(ProductDTO model, CancellationToken token = default(CancellationToken))
+        public async Task<ResponseModelDTO> AddProductAsync(ProductDTO model, CancellationToken token = default(CancellationToken))
         {
 
             Guid responseId;
             //var file = Request.Form.Files[0];
             ResponseModelDTO responseModelDTO = await _productDS.AddProductAsync(model);
-            responseId = responseModelDTO.GuidId;
-            return responseId;
+         
+            return responseModelDTO;
         }
         #endregion
 

@@ -31,5 +31,9 @@
         public string ImageUrl { get; set; }
 
         public string FileName { get; set; }
+
+        public int CategoryId { get; set; }
+
+        public string CategoryName { get; set; }
     }
 }
