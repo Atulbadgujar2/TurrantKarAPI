@@ -19,7 +19,6 @@ using TurrantKar.Repository;
 using TurrantKar.Common;
 using TurrantKar.DS;
 using TurrantKar.EH;
-using TurrantKar.Repository;
 using TurrantKar.SerilogLoggingService;
 
 namespace TurrantKar.DI
@@ -59,7 +58,7 @@ namespace TurrantKar.DI
             services.AddScoped<IProductTemplateRepository, ProductTemplateRepository>();
             services.AddScoped<IReturnRequestRepository, ReturnRequestRepository>();
             services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
-
+            services.AddScoped<IShoppingCartItemRepository, ShoppingCartItemRepository>();
 
             return services;
         }
@@ -84,6 +83,7 @@ namespace TurrantKar.DI
             services.AddScoped<IProductTemplateDS, ProductTemplateDS>();
             services.AddScoped<IReturnRequestDS, ReturnRequestDS>();
             services.AddScoped<IShoppingCartDS, ShoppingCartDS>();
+            services.AddScoped<IShoppingCartItemDS, ShoppingCartItemDS>();
             return services;
         }
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using TurrantKar.Repository;
 using TurrantKar.Common;
 using TurrantKar.DTO;
 using TurrantKar.Entity;
@@ -17,13 +16,15 @@ namespace TurrantKar.DS
         #region Local Member
         IShoppingCartRepository _shoppingCartRepository;
         IUnitOfWork _unitOfWork;
+        IShoppingCartItemDS _shoppingCartItemDS;
         #endregion
 
         #region Constructor
-        public ShoppingCartDS(IShoppingCartRepository shoppingCartRepository, IUnitOfWork unitOfWork) : base(shoppingCartRepository)
+        public ShoppingCartDS(IShoppingCartRepository shoppingCartRepository, IUnitOfWork unitOfWork, IShoppingCartItemDS shoppingCartItemDS) : base(shoppingCartRepository)
         {
             _shoppingCartRepository = shoppingCartRepository;
             _unitOfWork = unitOfWork;
+            _shoppingCartItemDS = shoppingCartItemDS;
         }
         #endregion
 
@@ -47,10 +48,18 @@ namespace TurrantKar.DS
                     {
 
                         ShoppingCart entity = new ShoppingCart();
+                        //Category entity = CategoryDTO.MapToEntity(model);
                         UpdateSystemFieldsByOpType(entity, OperationType.Add);
                         ShoppingCart ShoppingCart = await AddAsync(entity, token);
                         await _unitOfWork.SaveAsync();
-
+                        ShoppingCartItem shoppingCartItem;
+                        foreach (ShoppingCartItemDTO shoppingCartItemDTO in model.shopCartItemList ) {
+                            shoppingCartItem = new ShoppingCartItem();
+                            shoppingCartItem.ShoppingCartId = ShoppingCart.Id;
+                            shoppingCartItem = ShoppingCartItemDTO.MapToEntity(shoppingCartItemDTO);
+                            _shoppingCartItemDS.UpdateSystemFieldsByOpType(shoppingCartItem, OperationType.Add);
+                            await _shoppingCartItemDS.AddAsync(shoppingCartItem, token);
+                        }  
                         _unitOfWork.SaveAll();
                         transaction.Commit();
                         commonRonsponseDTO.Id = ShoppingCart.Id;
@@ -75,9 +84,29 @@ namespace TurrantKar.DS
             ShoppingCart entity = await _shoppingCartRepository.GetAsync(model.Id, token);
             if (entity != null & !entity.IsDeleted)
             {
-                //entity = ShoppingCartDTO.MapToEntityWithEntity(model, entity);
+                entity = ShoppingCartDTO.MapToEntityWithEntity(model, entity);
                 UpdateSystemFieldsByOpType(entity, OperationType.Update);
                 await _shoppingCartRepository.UpdateAsync(entity, entity.Id, token);
+
+                foreach (ShoppingCartItemDTO shoppingCartItemDTO in model.shopCartItemList)
+                {
+                    // Get existing ShoppingCartItem.
+                    ShoppingCartItem shoppingCartItem = await _shoppingCartItemDS.GetAsync(shoppingCartItemDTO.Id, token);
+                    if (entity != null & !entity.IsDeleted)
+                    {
+                        shoppingCartItem = ShoppingCartItemDTO.MapToEntityWithEntity(shoppingCartItemDTO, shoppingCartItem);
+                        _shoppingCartItemDS.UpdateSystemFieldsByOpType(shoppingCartItem, OperationType.Update);
+                        await _shoppingCartItemDS.UpdateAsync(shoppingCartItem, entity.Id, token);
+                    }
+                    else
+                    {
+                        shoppingCartItem.ShoppingCartId = entity.Id;
+                        shoppingCartItem = ShoppingCartItemDTO.MapToEntity(shoppingCartItemDTO);
+                        _shoppingCartItemDS.UpdateSystemFieldsByOpType(shoppingCartItem, OperationType.Add);
+                        await _shoppingCartItemDS.AddAsync(shoppingCartItem, token);
+                    }
+                }
+                
             }
             _unitOfWork.SaveAll();
             return commonRonsponseDTO;

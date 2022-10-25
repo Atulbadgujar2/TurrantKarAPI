@@ -1,18 +1,10 @@
 ﻿using System;
+using TurrantKar.Entity;
 
 namespace TurrantKar.DTO
 {
     public class ShoppingCartItemDTO : BaseDTO
     {
-
-        public string VirtualPath { get; set; }
-        public string Name { get; set; }
-
-        public string ShortDescription { get; set; }
-        public decimal Price { get; set; }
-        public decimal DiscountPrice { get; set; }
-        public int PricePerQuantity { get; set; }
-
         public int CustomerId { get; set; }
         public int ProductId { get; set; }
 
@@ -27,5 +19,43 @@ namespace TurrantKar.DTO
         public DateTime? RentalEndDateUtc { get; set; }
 
         public bool Active { get; set; }
+
+        public static ShoppingCartItem MapToEntity(ShoppingCartItemDTO model)
+        {
+            ShoppingCartItem entity = new ShoppingCartItem();    
+            entity.CustomerId = model.CustomerId;
+            entity.ProductId = model.ProductId;
+            entity.ShoppingCartId = model.ShoppingCartId;
+            entity.StoreId = model.StoreId;
+            entity.ShoppingCartTypeId = model.ShoppingCartTypeId;
+            entity.AttributesXml = model.AttributesXml;
+            entity.CustomerEnteredPrice = model.CustomerEnteredPrice;
+            entity.Quantity = model.Quantity;
+            entity.QuantityMRP = model.QuantityMRP;
+            entity.RentalStartDateUtc = model.RentalStartDateUtc;
+            entity.RentalEndDateUtc = model.RentalEndDateUtc;
+            entity.Active = model.Active;
+
+            return entity;
+        }
+
+
+        public static ShoppingCartItem MapToEntityWithEntity(ShoppingCartItemDTO model, ShoppingCartItem entity)
+        {
+            entity.CustomerId = model.CustomerId;
+            entity.ProductId = model.ProductId;
+            entity.ShoppingCartId = model.ShoppingCartId;
+            entity.StoreId = model.StoreId;
+            entity.ShoppingCartTypeId = model.ShoppingCartTypeId;
+            entity.AttributesXml = model.AttributesXml;
+            entity.CustomerEnteredPrice = model.CustomerEnteredPrice;
+            entity.Quantity = model.Quantity;
+            entity.QuantityMRP = model.QuantityMRP;
+            entity.RentalStartDateUtc = model.RentalStartDateUtc;
+            entity.RentalEndDateUtc = model.RentalEndDateUtc;
+            entity.Active = model.Active;
+            return entity;
+        }
+
     }
 }

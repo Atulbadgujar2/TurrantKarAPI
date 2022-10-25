@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31112.23
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TurrantKar.WebAPI", "TurrantKar.WebAPI\TurrantKar.WebAPI.csproj", "{54033BE2-4D8D-4E24-8D48-B2E68046324A}"
 EndProject
@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TurrantKar.Entity", "Turran
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TurrantKar.DTO", "TurrantKar.DTO\TurrantKar.DTO.csproj", "{5A2302AA-DBC6-4DF0-9A53-8E0A6E49E93D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurrantKar.SerilogLoggingService", "TurrantKar.SerilogLoggingService\TurrantKar.SerilogLoggingService.csproj", "{615B7186-6452-4CDA-9216-03BC1B92C216}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TurrantKar.SerilogLoggingService", "TurrantKar.SerilogLoggingService\TurrantKar.SerilogLoggingService.csproj", "{615B7186-6452-4CDA-9216-03BC1B92C216}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TurrantKar.Entity;
 
 namespace TurrantKar.DTO
 {
@@ -62,5 +63,127 @@ namespace TurrantKar.DTO
         public string ShippingRateComputationMethodSystemName { get; set; }
         public string CustomValuesXml { get; set; }
         public int? RedeemedRewardPointsEntryId { get; set; }
+
+        public List<OrderItemDTO> orderItemDTOList { get; set; }
+
+        public static Order MapToEntity(OrderDTO model)
+        {
+            Order entity = new Order();
+            entity.AffiliateId = model.AffiliateId;
+            entity.AllowStoringCreditCardNumber = model.AllowStoringCreditCardNumber;
+            entity.AuthorizationTransactionCode = model.AuthorizationTransactionCode;
+            entity.AuthorizationTransactionId = model.AuthorizationTransactionId;
+            entity.AuthorizationTransactionResult = model.AuthorizationTransactionResult;
+            entity.BillingAddressId = model.BillingAddressId;
+            entity.CaptureTransactionId = model.CaptureTransactionId;
+            entity.CustomerId = model.CustomerId;
+            entity.CustomOrderNumber = model.CustomOrderNumber;
+            entity.CardCvv2 = model.CardCvv2;
+            entity.CaptureTransactionResult = model.CaptureTransactionResult;
+            entity.CardExpirationMonth = model.CardExpirationMonth;
+            entity.CardExpirationYear = model.CardExpirationYear;
+            entity.CardName = model.CardName;
+            entity.CardNumber = model.CardNumber;        
+            entity.CardType = model.CardType;
+            entity.CheckoutAttributeDescription = model.CheckoutAttributeDescription;
+            entity.CheckoutAttributesXml = model.CheckoutAttributesXml;
+            entity.CurrencyRate = model.CurrencyRate;
+            entity.CustomerCurrencyCode = model.CustomerCurrencyCode;
+            entity.CustomerIp = model.CustomerIp;
+            entity.CustomerLanguageId = model.CustomerLanguageId;
+            entity.CustomerTaxDisplayTypeId = model.CustomerTaxDisplayTypeId;
+            entity.CustomValuesXml = model.CustomValuesXml;
+            entity.MaskedCreditCardNumber = model.MaskedCreditCardNumber;         
+            entity.PickupAddressId = model.PickupAddressId;
+            entity.PaymentMethodSystemName = model.PaymentMethodSystemName;
+            entity.PaymentStatusId = model.PaymentStatusId;
+            entity.PickupInStore = model.PickupInStore;
+            entity.PaidDateUtc = model.PaidDateUtc;
+            entity.PaymentMethodAdditionalFeeExclTax = model.PaymentMethodAdditionalFeeExclTax;
+            entity.PaymentMethodAdditionalFeeInclTax = model.PaymentMethodAdditionalFeeInclTax;
+            entity.OrderDiscount = model.OrderDiscount;
+            entity.OrderGuid = model.OrderGuid;
+            entity.OrderShippingExclTax = model.OrderShippingExclTax;
+            entity.OrderShippingInclTax = model.OrderShippingInclTax;
+            entity.OrderStatusId = model.OrderStatusId;
+            entity.OrderSubTotalDiscountExclTax = model.OrderSubTotalDiscountExclTax;
+            entity.OrderSubTotalDiscountInclTax = model.OrderSubTotalDiscountInclTax;
+            entity.OrderSubtotalExclTax = model.OrderSubtotalExclTax;
+            entity.OrderSubtotalInclTax = model.OrderSubtotalInclTax;
+            entity.OrderTax = model.OrderTax;
+            entity.OrderTotal = model.OrderTotal;
+            entity.RedeemedRewardPointsEntryId = model.RedeemedRewardPointsEntryId;
+            entity.RefundedAmount = model.RefundedAmount;
+            entity.RewardPointsHistoryEntryId = model.RewardPointsHistoryEntryId;
+            entity.ShippingAddressId = model.ShippingAddressId;
+            entity.StoreId = model.StoreId;
+            entity.ShippingMethod = model.ShippingMethod;
+            entity.ShippingRateComputationMethodSystemName = model.ShippingRateComputationMethodSystemName;
+            entity.ShippingStatusId = model.ShippingStatusId;
+            entity.SubscriptionTransactionId = model.SubscriptionTransactionId;
+            entity.TaxRates = model.TaxRates;
+            entity.VatNumber = model.VatNumber;
+            return entity;
+        }
+
+        public static Order MapToEntityWithEntity(OrderDTO model, Order entity)
+        {
+            entity.AffiliateId = model.AffiliateId;
+            entity.AllowStoringCreditCardNumber = model.AllowStoringCreditCardNumber;
+            entity.AuthorizationTransactionCode = model.AuthorizationTransactionCode;
+            entity.AuthorizationTransactionId = model.AuthorizationTransactionId;
+            entity.AuthorizationTransactionResult = model.AuthorizationTransactionResult;
+            entity.BillingAddressId = model.BillingAddressId;
+            entity.CaptureTransactionId = model.CaptureTransactionId;
+            entity.CustomerId = model.CustomerId;
+            entity.CustomOrderNumber = model.CustomOrderNumber;
+            entity.CardCvv2 = model.CardCvv2;
+            entity.CaptureTransactionResult = model.CaptureTransactionResult;
+            entity.CardExpirationMonth = model.CardExpirationMonth;
+            entity.CardExpirationYear = model.CardExpirationYear;
+            entity.CardName = model.CardName;
+            entity.CardNumber = model.CardNumber;
+            entity.CardType = model.CardType;
+            entity.CheckoutAttributeDescription = model.CheckoutAttributeDescription;
+            entity.CheckoutAttributesXml = model.CheckoutAttributesXml;
+            entity.CurrencyRate = model.CurrencyRate;
+            entity.CustomerCurrencyCode = model.CustomerCurrencyCode;
+            entity.CustomerIp = model.CustomerIp;
+            entity.CustomerLanguageId = model.CustomerLanguageId;
+            entity.CustomerTaxDisplayTypeId = model.CustomerTaxDisplayTypeId;
+            entity.CustomValuesXml = model.CustomValuesXml;
+            entity.MaskedCreditCardNumber = model.MaskedCreditCardNumber;
+            entity.PickupAddressId = model.PickupAddressId;
+            entity.PaymentMethodSystemName = model.PaymentMethodSystemName;
+            entity.PaymentStatusId = model.PaymentStatusId;
+            entity.PickupInStore = model.PickupInStore;
+            entity.PaidDateUtc = model.PaidDateUtc;
+            entity.PaymentMethodAdditionalFeeExclTax = model.PaymentMethodAdditionalFeeExclTax;
+            entity.PaymentMethodAdditionalFeeInclTax = model.PaymentMethodAdditionalFeeInclTax;
+            entity.OrderDiscount = model.OrderDiscount;
+            entity.OrderGuid = model.OrderGuid;
+            entity.OrderShippingExclTax = model.OrderShippingExclTax;
+            entity.OrderShippingInclTax = model.OrderShippingInclTax;
+            entity.OrderStatusId = model.OrderStatusId;
+            entity.OrderSubTotalDiscountExclTax = model.OrderSubTotalDiscountExclTax;
+            entity.OrderSubTotalDiscountInclTax = model.OrderSubTotalDiscountInclTax;
+            entity.OrderSubtotalExclTax = model.OrderSubtotalExclTax;
+            entity.OrderSubtotalInclTax = model.OrderSubtotalInclTax;
+            entity.OrderTax = model.OrderTax;
+            entity.OrderTotal = model.OrderTotal;
+            entity.RedeemedRewardPointsEntryId = model.RedeemedRewardPointsEntryId;
+            entity.RefundedAmount = model.RefundedAmount;
+            entity.RewardPointsHistoryEntryId = model.RewardPointsHistoryEntryId;
+            entity.ShippingAddressId = model.ShippingAddressId;
+            entity.StoreId = model.StoreId;
+            entity.ShippingMethod = model.ShippingMethod;
+            entity.ShippingRateComputationMethodSystemName = model.ShippingRateComputationMethodSystemName;
+            entity.ShippingStatusId = model.ShippingStatusId;
+            entity.SubscriptionTransactionId = model.SubscriptionTransactionId;
+            entity.TaxRates = model.TaxRates;
+            entity.VatNumber = model.VatNumber;
+            return entity;
+        }
+
     }
 }

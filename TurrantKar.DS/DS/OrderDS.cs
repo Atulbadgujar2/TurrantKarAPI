@@ -17,13 +17,15 @@ namespace TurrantKar.DS
         #region Local Member
         IOrderRepository _orderRepository;
         IUnitOfWork _unitOfWork;
+        IOrderItemDS _orderItemDS;
         #endregion
 
         #region Constructor
-        public OrderDS(IOrderRepository orderRepository, IUnitOfWork unitOfWork) : base(orderRepository)
+        public OrderDS(IOrderRepository orderRepository, IUnitOfWork unitOfWork, IOrderItemDS orderItemDS) : base(orderRepository)
         {
             _orderRepository = orderRepository;
             _unitOfWork = unitOfWork;
+            _orderItemDS = orderItemDS;
         }
         #endregion
 
@@ -51,6 +53,15 @@ namespace TurrantKar.DS
                         Order Order = await AddAsync(entity, token);
                         await _unitOfWork.SaveAsync();
 
+                        OrderItem OrderItem;
+                        foreach (OrderItemDTO orderItemDTO in model.orderItemDTOList)
+                        {
+                            OrderItem = new OrderItem();
+                            OrderItem.OrderId = entity.Id;
+                            OrderItem = OrderItemDTO.MapToEntity(orderItemDTO);
+                            _orderItemDS.UpdateSystemFieldsByOpType(OrderItem, OperationType.Add);
+                            await _orderItemDS.AddAsync(OrderItem, token);
+                        }
                         _unitOfWork.SaveAll();
                         transaction.Commit();
                         commonRonsponseDTO.Id = Order.Id;
@@ -78,6 +89,25 @@ namespace TurrantKar.DS
                 //entity = OrderDTO.MapToEntityWithEntity(model, entity);
                 UpdateSystemFieldsByOpType(entity, OperationType.Update);
                 await _orderRepository.UpdateAsync(entity, entity.Id, token);
+
+                foreach(OrderItemDTO orderItemDTO in model.orderItemDTOList)
+                {
+                    // Get existing OrderItem.
+                    OrderItem orderItem = await _orderItemDS.GetAsync(orderItemDTO.Id, token);
+                    if (entity != null & !entity.IsDeleted)
+                    {
+                        orderItem = OrderItemDTO.MapToEntityWithEntity(orderItemDTO, orderItem);
+                        _orderItemDS.UpdateSystemFieldsByOpType(orderItem, OperationType.Update);
+                        await _orderItemDS.UpdateAsync(orderItem, entity.Id, token);
+                    }
+                    else
+                    {
+                        orderItem.OrderId = entity.Id;
+                        orderItem = OrderItemDTO.MapToEntity(orderItemDTO);
+                        _orderItemDS.UpdateSystemFieldsByOpType(orderItem, OperationType.Add);
+                        await _orderItemDS.AddAsync(orderItem, token);
+                    }
+                }
             }
             _unitOfWork.SaveAll();
             return commonRonsponseDTO;
